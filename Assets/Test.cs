@@ -23,13 +23,13 @@ public class Test : MonoBehaviour
         var service = new AuthService(client);
         var controller = new AuthController(service);
 
-        string token = await controller.LoginAsync("mohamed.salem@genesiscreations.co", "Test12345");
-        Debug.Log($"Token: {token}");
+        string token = await controller.LoginWithPinCodeAsync("630204");
+        Debug.Log($"Token: {ARKCache.AuthToken}");
         var sessionService = new SessionService(client);
         var sessionController = new SessionController(sessionService);
 
         var session = await sessionController.GetActiveUserSessionAsync();
-        Debug.Log($"Session ID: {session.ActiveUserSession.Id}");
+        Debug.Log($"Session ID: {ARKCache.Session.Id}");
         
     }
 }

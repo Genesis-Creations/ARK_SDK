@@ -39,5 +39,30 @@ namespace ARK.SDK.Services.Auth
                 throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
             }
         }
+
+        public async UniTask<string> LoginWithPinCodeAsync(string pinCode)
+        {
+            var variables = new LoginWithPinCodeVariables(pinCode);
+            string json = await client.ExecuteAsync(AuthQueries.LoginWithPincode, variables);
+
+            try
+            {
+                var result = JsonConvert.DeserializeObject<GraphQLResponse<LoginWithPinCodeResponse>>(json);
+
+                if (result.errors != null && result.errors.Count > 0)
+                {
+                    string gqlError = result.errors[0].message;
+                    throw new SDKException(SDKErrorType.GraphQLError, gqlError);
+                }
+
+                ARKCache.CacheAuthToken(result.data.Login.AccessToken);
+
+                return result.data.Login.AccessToken;
+            }
+            catch (JsonException ex)
+            {
+                throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
+            }
+        }
     }
 }

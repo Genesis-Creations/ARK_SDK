@@ -9,7 +9,6 @@ namespace ARK.SDK.Core
     public class GraphQLClient
     {
         private readonly string endpoint;
-        private bool enableLogging = true;
 
         public GraphQLClient(string endpoint)
         {
@@ -21,9 +20,6 @@ namespace ARK.SDK.Core
         {
             var payload = new { query, variables };
             string jsonPayload = JsonConvert.SerializeObject(payload);
-
-            if (enableLogging)
-                Debug.Log($"GraphQL Request:\n{jsonPayload}");
 
             using var request = new UnityWebRequest(endpoint, "POST");
             byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);

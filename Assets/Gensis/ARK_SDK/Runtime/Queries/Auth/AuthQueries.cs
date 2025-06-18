@@ -8,5 +8,13 @@ namespace ARK.SDK.Queries.Auth
                 accessToken
             }
         }";
+
+        public const string LoginWithPincode = @"
+        mutation LoginWithPincode($pincode: String!)
+        {
+            loginWithPincode(pincode: $pincode) {
+                accessToken
+            }
+        }";
     }
 }

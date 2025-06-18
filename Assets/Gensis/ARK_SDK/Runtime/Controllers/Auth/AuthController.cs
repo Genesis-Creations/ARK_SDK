@@ -24,5 +24,17 @@ namespace ARK.SDK.Controllers
                 throw new SDKException(ex.ErrorType, $"LoginAsync failed: {ex.Message}");
             }
         }
+
+        public async UniTask<string> LoginWithPinCodeAsync(string pinCode)
+        {
+            try
+            {
+                return await authService.LoginWithPinCodeAsync(pinCode);
+            }
+            catch (SDKException ex)
+            {
+                throw new SDKException(ex.ErrorType, $"LoginWithPinCodeAsync failed: {ex.Message}");
+            }
+        }
     }
 }
