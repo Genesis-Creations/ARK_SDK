@@ -1,5 +1,5 @@
 {
-  "name": "com.yourcompany.ark_sdk",
+  "name": "com.genesis.ark_sdk",
   "version": "1.0.0",
   "displayName": "ARK SDK",
   "description": "A modular GraphQL SDK for Unity. Handles authentication and backend operations.",

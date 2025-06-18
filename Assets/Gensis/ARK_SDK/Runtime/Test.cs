@@ -2,15 +2,12 @@ using ARK.SDK.Controllers;
 using ARK.SDK.Core;
 using ARK.SDK.Services.Auth;
 using ARK.SDK.Services.Session;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
     [SerializeField] private Button button;
-    private AuthService authService;
-    public TextMeshProUGUI resultText;
 
     private void Start()
     {
@@ -30,6 +27,5 @@ public class Test : MonoBehaviour
 
         var session = await sessionController.GetActiveUserSessionAsync();
         Debug.Log($"Session ID: {ARKCache.Session.Id}");
-        
     }
 }
