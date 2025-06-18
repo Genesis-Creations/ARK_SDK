@@ -1,6 +1,7 @@
 using ARK.SDK.Controllers;
 using ARK.SDK.Core;
-using ARK.SDK.Services;
+using ARK.SDK.Services.Auth;
+using ARK.SDK.Services.Session;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,13 +19,17 @@ public class Test : MonoBehaviour
 
     private async void OnButtonClick()
     {
-        var client = new GraphQLClient("https://ark.genesiscreations.co/graphql");
+        var client = new GraphQLClient("http://vrc.genesiscreations.co:5000/graphql");
         var service = new AuthService(client);
         var controller = new AuthController(service);
 
-        string token = await controller.Login("jumeriah@genesiscreations.co", "Test12345");
-        client.SetAuthToken(token);
-
+        string token = await controller.LoginAsync("mohamed.salem@genesiscreations.co", "Test12345");
         Debug.Log($"Token: {token}");
+        var sessionService = new SessionService(client);
+        var sessionController = new SessionController(sessionService);
+
+        var session = await sessionController.GetActiveUserSessionAsync();
+        Debug.Log($"Session ID: {session.ActiveUserSession.Id}");
+        
     }
 }

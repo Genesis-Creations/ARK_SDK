@@ -1,8 +1,6 @@
 using ARK.SDK.Core;
-using ARK.SDK.Services;
+using ARK.SDK.Services.Auth;
 using Cysharp.Threading.Tasks;
-using System;
-using UnityEngine;
 
 namespace ARK.SDK.Controllers
 {

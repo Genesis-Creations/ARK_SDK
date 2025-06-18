@@ -1,12 +1,10 @@
+using Newtonsoft.Json;
+
 namespace ARK.SDK.Models.Auth
 {
-    public class LoginData
-    {
-        public string accessToken;
-    }
-
     public class LoginResponse
     {
-        public LoginData login;
+        [JsonProperty("login")]
+        public LoginData Login { get; private set; }
     }
 }

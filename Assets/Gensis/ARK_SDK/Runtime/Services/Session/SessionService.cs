@@ -1,29 +1,27 @@
 using ARK.SDK.Core;
-using ARK.SDK.Models.Auth;
-using ARK.SDK.Queries.Auth;
+using ARK.SDK.Models.Session;
+using ARK.SDK.Queries.Session;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
-using System;
 
-namespace ARK.SDK.Services
+namespace ARK.SDK.Services.Session
 {
-    public class AuthService
+    public class SessionService
     {
         private readonly GraphQLClient client;
 
-        public AuthService(GraphQLClient client)
+        public SessionService(GraphQLClient client)
         {
             this.client = client;
         }
 
-        public async UniTask<string> LoginAsync(string email, string password)
+        public async UniTask<GetActiveUserSessionResponse> GetActiveUserSessionAsync()
         {
-            var variables = new LoginVariables(email, password);
-            string json = await client.ExecuteAsync(AuthQueries.Login, variables);
+            string json = await client.ExecuteAsync(SessionQueries.GetActiveUserSession);
 
             try
             {
-                var result = JsonConvert.DeserializeObject<GraphQLResponse<LoginResponse>>(json);
+                var result = JsonConvert.DeserializeObject<GraphQLResponse<GetActiveUserSessionResponse>>(json);
 
                 if (result.errors != null && result.errors.Count > 0)
                 {
@@ -31,7 +29,9 @@ namespace ARK.SDK.Services
                     throw new SDKException(SDKErrorType.GraphQLError, gqlError);
                 }
 
-                return result.data.login.accessToken;
+                ARKCache.CacheSession(result.data.ActiveUserSession);
+
+                return result.data;
             }
             catch (JsonException ex)
             {

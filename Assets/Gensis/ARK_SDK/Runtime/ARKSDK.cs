@@ -1,6 +1,6 @@
 using ARK.SDK.Controllers;
 using ARK.SDK.Core;
-using ARK.SDK.Services;
+using ARK.SDK.Services.Auth;
 using UnityEngine;
 
 namespace ARK.SDK

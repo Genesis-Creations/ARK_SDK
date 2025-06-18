@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System;
 using System.Text;
 using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
@@ -10,7 +9,6 @@ namespace ARK.SDK.Core
     public class GraphQLClient
     {
         private readonly string endpoint;
-        private string authToken;
         private bool enableLogging = true;
 
         public GraphQLClient(string endpoint)
@@ -18,12 +16,8 @@ namespace ARK.SDK.Core
             this.endpoint = endpoint;
         }
 
-        public void SetAuthToken(string token)
-        {
-            authToken = token;
-        }
-
-        public async UniTask<string> ExecuteAsync(string query, object variables)
+        // Make the 'variables' parameter optional (defaults to null)
+        public async UniTask<string> ExecuteAsync(string query, object variables = null)
         {
             var payload = new { query, variables };
             string jsonPayload = JsonConvert.SerializeObject(payload);
@@ -37,8 +31,8 @@ namespace ARK.SDK.Core
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
 
-            if (!string.IsNullOrEmpty(authToken))
-                request.SetRequestHeader("Authorization", $"Bearer {authToken}");
+            if (!string.IsNullOrEmpty(ARKCache.AuthToken))
+                request.SetRequestHeader("Authorization", $"Bearer {ARKCache.AuthToken}");
 
             return await SendRequestAsync(request);
         }

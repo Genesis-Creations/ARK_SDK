@@ -1,0 +1,19 @@
+/* Make root vertical and stretch full height */
+.root {
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Content grows to fill space above footer */
+.content {
+    flex-grow: 1;
+}
+
+/* Footer stays at bottom */
+.footer-container {
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    unity-text-align: middle-center;
+}
