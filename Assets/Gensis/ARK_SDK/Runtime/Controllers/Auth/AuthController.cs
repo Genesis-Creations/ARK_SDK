@@ -2,7 +2,7 @@ using ARK.SDK.Core;
 using ARK.SDK.Services.Auth;
 using Cysharp.Threading.Tasks;
 
-namespace ARK.SDK.Controllers
+namespace ARK.SDK.Controllers.Auth
 {
     public class AuthController
     {

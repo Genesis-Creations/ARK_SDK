@@ -1,4 +1,5 @@
-using ARK.SDK.Controllers;
+using ARK.SDK.Controllers.Auth;
+using ARK.SDK.Controllers.Session;
 using ARK.SDK.Core;
 using ARK.SDK.Services.Auth;
 using ARK.SDK.Services.Session;
@@ -21,6 +22,7 @@ public class Test : MonoBehaviour
         var controller = new AuthController(service);
 
         string token = await controller.LoginWithPinCodeAsync("630204");
+        await controller.LoginAsync("asasa", "sadfsaf");
         Debug.Log($"Token: {ARKCache.AuthToken}");
         var sessionService = new SessionService(client);
         var sessionController = new SessionController(sessionService);

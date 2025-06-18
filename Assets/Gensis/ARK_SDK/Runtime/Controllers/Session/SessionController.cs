@@ -3,7 +3,7 @@ using ARK.SDK.Models.Session;
 using ARK.SDK.Services.Session;
 using Cysharp.Threading.Tasks;
 
-namespace ARK.SDK.Controllers
+namespace ARK.SDK.Controllers.Session
 {
     public class SessionController
     {
