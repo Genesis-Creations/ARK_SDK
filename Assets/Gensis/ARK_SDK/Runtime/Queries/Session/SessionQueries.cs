@@ -22,5 +22,9 @@ namespace ARK.SDK.Queries.Session
                 }
             }
         }";
+
+        public const string StartUserSession = @"mutation StartUserSession($sessionId: String!) {
+            startUserSession(sessionId: $sessionId)
+        }";
     }
 }

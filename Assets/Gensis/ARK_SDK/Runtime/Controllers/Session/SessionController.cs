@@ -25,5 +25,17 @@ namespace ARK.SDK.Controllers
                 throw new SDKException(ex.ErrorType, $"GetActiveUserSessionAsync failed: {ex.Message}");
             }
         }
+
+        public async UniTask<StartUserSessionResponse> StartUserSessionAsync(string sessionId)
+        {
+            try
+            {
+                return await sessionService.StartUserSessionAsync(sessionId);
+            }
+            catch (SDKException ex)
+            {
+                throw new SDKException(ex.ErrorType, $"StartUserSessionAsync failed: {ex.Message}");
+            }
+        }
     }
 }
