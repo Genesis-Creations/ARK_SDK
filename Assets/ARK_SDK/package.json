@@ -1,5 +1,5 @@
 {
-  "name": "com.genesis.ark_sdk",
+  "name": "com.genesiscreations.arksdk",
   "version": "1.0.0",
   "displayName": "ARK SDK",
   "description": "A modular GraphQL SDK for Unity. Handles authentication and backend operations.",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "3.0.2",
+    "com.unity.textmeshpro": "3.0.6",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
   }
 }
