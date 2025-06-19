@@ -1,8 +1,8 @@
 using ARK.SDK.Core;
 using ARK.SDK.Models.Branding;
 using ARK.SDK.Queries.Branding;
-using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace ARK.SDK.Services.Branding
 {
@@ -15,7 +15,7 @@ namespace ARK.SDK.Services.Branding
             this.client = client;
         }
 
-        public async UniTask<BrandingResponse> BrandingAsync()
+        public async Task<BrandingResponse> BrandingAsync()
         {
             string json = await client.ExecuteAsync(BrandingQueries.Branding);
 

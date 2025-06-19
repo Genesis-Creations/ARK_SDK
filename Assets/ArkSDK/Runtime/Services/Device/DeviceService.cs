@@ -2,8 +2,8 @@ using ARK.SDK.Core;
 using ARK.SDK.Models.Branding;
 using ARK.SDK.Models.Device;
 using ARK.SDK.Queries.Device;
-using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace ARK.SDK.Services.Device
 {
@@ -16,7 +16,7 @@ namespace ARK.SDK.Services.Device
             this.client = client;
         }
 
-        public async UniTask<CheckDeviceIdResponse> CheckDeviceIdAsync(string deviceId)
+        public async Task<CheckDeviceIdResponse> CheckDeviceIdAsync(string deviceId)
         {
             var variables = new CheckDeviceIdVariables(deviceId);
             string json = await client.ExecuteAsync(DeviceQueries.CheckDeviceId);

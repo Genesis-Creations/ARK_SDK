@@ -1,9 +1,7 @@
 using ARK.SDK.Core;
 using ARK.SDK.Models.Device;
-using ARK.SDK.Models.Session;
 using ARK.SDK.Services.Device;
-using ARK.SDK.Services.Session;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace ARK.SDK.Controllers.Device
 {
@@ -16,7 +14,7 @@ namespace ARK.SDK.Controllers.Device
             this.deviceService = deviceService;
         }
 
-        public async UniTask<CheckDeviceIdResponse> CheckDeviceIdAsync(string deviceId)
+        public async Task<CheckDeviceIdResponse> CheckDeviceIdAsync(string deviceId)
         {
             try
             {
@@ -27,7 +25,5 @@ namespace ARK.SDK.Controllers.Device
                 throw new SDKException(ex.ErrorType, $"CheckDeviceIdAsync failed: {ex.Message}");
             }
         }
-
-      
     }
 }

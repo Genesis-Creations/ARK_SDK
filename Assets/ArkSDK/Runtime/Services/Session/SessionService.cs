@@ -1,8 +1,8 @@
 using ARK.SDK.Core;
 using ARK.SDK.Models.Session;
 using ARK.SDK.Queries.Session;
-using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace ARK.SDK.Services.Session
 {
@@ -15,7 +15,7 @@ namespace ARK.SDK.Services.Session
             this.client = client;
         }
 
-        public async UniTask<GetActiveUserSessionResponse> GetActiveUserSessionAsync()
+        public async Task<GetActiveUserSessionResponse> GetActiveUserSessionAsync()
         {
             string json = await client.ExecuteAsync(SessionQueries.GetActiveUserSession);
 
@@ -39,7 +39,7 @@ namespace ARK.SDK.Services.Session
             }
         }
 
-        public async UniTask<StartUserSessionResponse> StartUserSessionAsync(string sessionId)
+        public async Task<StartUserSessionResponse> StartUserSessionAsync(string sessionId)
         {
             var variables = new StartUserSessionVariables(sessionId);
             string json = await client.ExecuteAsync(SessionQueries.StartUserSession, variables);

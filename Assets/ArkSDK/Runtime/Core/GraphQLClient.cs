@@ -1,7 +1,6 @@
-using Cysharp.Threading.Tasks;
 using System.Text;
+using System.Threading.Tasks;
 using Unity.Plastic.Newtonsoft.Json;
-using UnityEngine;
 using UnityEngine.Networking;
 
 namespace ARK.SDK.Core
@@ -16,7 +15,7 @@ namespace ARK.SDK.Core
         }
 
         // Make the 'variables' parameter optional (defaults to null)
-        public async UniTask<string> ExecuteAsync(string query, object variables = null)
+        public async Task<string> ExecuteAsync(string query, object variables = null)
         {
             var payload = new { query, variables };
             string jsonPayload = JsonConvert.SerializeObject(payload);
@@ -33,9 +32,9 @@ namespace ARK.SDK.Core
             return await SendRequestAsync(request);
         }
 
-        private UniTask<string> SendRequestAsync(UnityWebRequest request)
+        private Task<string> SendRequestAsync(UnityWebRequest request)
         {
-            var tcs = new UniTaskCompletionSource<string>();
+            var tcs = new TaskCompletionSource<string>();
             var op = request.SendWebRequest();
 
             op.completed += _ =>

@@ -1,6 +1,6 @@
 using ARK.SDK.Core;
 using ARK.SDK.Services.Auth;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace ARK.SDK.Controllers.Auth
 {
@@ -13,7 +13,7 @@ namespace ARK.SDK.Controllers.Auth
             this.authService = authService;
         }
 
-        public async UniTask<string> LoginAsync(string email, string password)
+        public async Task<string> LoginAsync(string email, string password)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace ARK.SDK.Controllers.Auth
             }
         }
 
-        public async UniTask<string> LoginWithPinCodeAsync(string pinCode)
+        public async Task<string> LoginWithPinCodeAsync(string pinCode)
         {
             try
             {

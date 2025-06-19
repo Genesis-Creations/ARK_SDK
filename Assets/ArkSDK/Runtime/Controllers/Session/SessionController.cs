@@ -1,7 +1,7 @@
 using ARK.SDK.Core;
 using ARK.SDK.Models.Session;
 using ARK.SDK.Services.Session;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace ARK.SDK.Controllers.Session
 {
@@ -14,7 +14,7 @@ namespace ARK.SDK.Controllers.Session
             this.sessionService = sessionService;
         }
 
-        public async UniTask<GetActiveUserSessionResponse> GetActiveUserSessionAsync()
+        public async Task<GetActiveUserSessionResponse> GetActiveUserSessionAsync()
         {
             try
             {
@@ -26,7 +26,7 @@ namespace ARK.SDK.Controllers.Session
             }
         }
 
-        public async UniTask<StartUserSessionResponse> StartUserSessionAsync(string sessionId)
+        public async Task<StartUserSessionResponse> StartUserSessionAsync(string sessionId)
         {
             try
             {

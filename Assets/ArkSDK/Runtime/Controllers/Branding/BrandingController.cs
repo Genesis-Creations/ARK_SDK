@@ -3,7 +3,7 @@ using ARK.SDK.Models.Branding;
 using ARK.SDK.Models.Session;
 using ARK.SDK.Services.Branding;
 using ARK.SDK.Services.Session;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace ARK.SDK.Controllers.Branding
 {
@@ -16,7 +16,7 @@ namespace ARK.SDK.Controllers.Branding
             this.brandingService = brandingService;
         }
 
-        public async UniTask<BrandingResponse> BrandingAsync()
+        public async Task<BrandingResponse> BrandingAsync()
         {
             try
             {
