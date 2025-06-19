@@ -17,16 +17,10 @@ public class Test : MonoBehaviour
 
     private async void OnButtonClick()
     {
-        var client = new GraphQLClient("http://vrc.genesiscreations.co:5000/graphql");
-        var service = new AuthService(client);
-        var controller = new AuthController(service);
-
-        string token = await controller.LoginWithPinCodeAsync("630204");
+        await ARKManager.Auth.LoginWithPinCodeAsync("630204");
         Debug.Log($"Token: {ARKCache.AuthToken}");
-        var sessionService = new SessionService(client);
-        var sessionController = new SessionController(sessionService);
 
-        var session = await sessionController.GetActiveUserSessionAsync();
+        await ARKManager.Session.GetActiveUserSessionAsync();
         Debug.Log($"Session ID: {ARKCache.Session.Id}");
     }
 }

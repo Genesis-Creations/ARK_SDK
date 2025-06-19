@@ -7,7 +7,7 @@ public class ARKWindow : EditorWindow
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;
 
-    [MenuItem("Genesis/ARKSDK")]
+    [MenuItem("Genesis/ARKManager")]
     public static void ShowExample()
     {
         ARKWindow wnd = GetWindow<ARKWindow>();
