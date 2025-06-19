@@ -17,7 +17,7 @@ public class Test : MonoBehaviour
 
     private async void OnButtonClick()
     {
-        var client = new GraphQLClient("http://vrc.genesiscreations.co:5000/graphql");
+        var client = new GraphQLClient("https://vrc.genesiscreations.co:5000/graphql");
         var service = new AuthService(client);
         var controller = new AuthController(service);
 

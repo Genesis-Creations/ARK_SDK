@@ -1,13 +1,13 @@
 {
-  "name": "com.genesiscreations.arksdk",
+  "name": "com.genesis.arksdk",
   "version": "1.0.0",
   "displayName": "ARK SDK",
   "description": "A modular GraphQL SDK for Unity. Handles authentication and backend operations.",
   "unity": "2022.3.0",
   "author": {
-    "name": "Genesis Creations",
-    "email": "info@genesiscreations.co",
-    "url": "https://github.com/Genesis-Creations"
+    "name": "Genesis Creations S.A.E",
+    "email": "genesis@genesiscreations.co",
+    "url": "https://www.genesiscreations.co"
   },
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "3.0.2",
