@@ -26,6 +26,6 @@ Add the following line to your project's **`Packages/manifest.json`** under the 
 ```json
 {
   "dependencies": {
-    "com.genesiscreations.arksdk": "https://github.com/Genesis-Creations/ARK_SDK.git"
+    "com.genesis.arksdk": "https://github.com/Genesis-Creations/ARK_SDK.git?path=Assets/ArkSDK"
   }
 }
