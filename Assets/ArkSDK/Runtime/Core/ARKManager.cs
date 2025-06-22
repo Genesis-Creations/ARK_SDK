@@ -2,122 +2,124 @@ using ARK.SDK.Controllers.Auth;
 using ARK.SDK.Controllers.Branding;
 using ARK.SDK.Controllers.Device;
 using ARK.SDK.Controllers.Session;
-using ARK.SDK.Core;
 using ARK.SDK.Services.Auth;
 using ARK.SDK.Services.Branding;
 using ARK.SDK.Services.Device;
 using ARK.SDK.Services.Session;
 using UnityEngine;
 
-public static class ARKManager
+namespace ARK.SDK.Core
 {
-    // GraphQL URL, loaded via ScriptableObject
-    private static ArkSettings arkSettings;
-
-    private static GraphQLClient client;
-
-    // Singleton-like pattern for controllers
-    private static AuthController authController;
-
-    private static SessionController sessionController;
-
-    private static DeviceController deviceController;
-
-    private static BrandingController brandingController;
-
-    private static bool IsInitialized = false;
-
-    static ARKManager()
+    public static class ARKManager
     {
-        if (!IsInitialized)
-        {
-            Initialize();
-        }
-    }
+        // GraphQL URL, loaded via ScriptableObject
+        private static ArkSettings arkSettings;
 
-    private static void Initialize()
-    {
-        arkSettings = Resources.Load<ArkSettings>("Settings/ArkSettings");
+        private static GraphQLClient client;
 
-        if (arkSettings == null)
-        {
-            Debug.LogError("Failed to load arkSettings from Resources.");
-            return;
-        }
-        else
-        {
-            IsInitialized = true;
-        }
-    }
+        // Singleton-like pattern for controllers
+        private static AuthController authController;
 
-    private static GraphQLClient Client
-    {
-        get
+        private static SessionController sessionController;
+
+        private static DeviceController deviceController;
+
+        private static BrandingController brandingController;
+
+        private static bool IsInitialized = false;
+
+        static ARKManager()
         {
-            if (client == null)
+            if (!IsInitialized)
             {
-                if (arkSettings == null)
+                Initialize();
+            }
+        }
+
+        private static void Initialize()
+        {
+            arkSettings = Resources.Load<ArkSettings>("Settings/ArkSettings");
+
+            if (arkSettings == null)
+            {
+                Debug.LogError("Failed to load arkSettings from Resources.");
+                return;
+            }
+            else
+            {
+                IsInitialized = true;
+            }
+        }
+
+        private static GraphQLClient Client
+        {
+            get
+            {
+                if (client == null)
                 {
-                    Debug.LogError("GraphQLSettings ScriptableObject is not assigned.");
-                    return null;
+                    if (arkSettings == null)
+                    {
+                        Debug.LogError("GraphQLSettings ScriptableObject is not assigned.");
+                        return null;
+                    }
+
+                    client = new GraphQLClient(arkSettings.GraphQLUrl);
                 }
-
-                client = new GraphQLClient(arkSettings.GraphQLUrl);
+                return client;
             }
-            return client;
         }
-    }
 
-    // Lazy initialization for Controllers
-    public static AuthController Auth
-    {
-        get
+        // Lazy initialization for Controllers
+        public static AuthController Auth
         {
-            if (authController == null)
+            get
             {
-                var authService = new AuthService(Client);
-                authController = new AuthController(authService);
+                if (authController == null)
+                {
+                    var authService = new AuthService(Client);
+                    authController = new AuthController(authService);
+                }
+                return authController;
             }
-            return authController;
         }
-    }
 
-    public static SessionController Session
-    {
-        get
+        public static SessionController Session
         {
-            if (sessionController == null)
+            get
             {
-                var sessionService = new SessionService(Client);
-                sessionController = new SessionController(sessionService);
+                if (sessionController == null)
+                {
+                    var sessionService = new SessionService(Client);
+                    sessionController = new SessionController(sessionService);
+                }
+                return sessionController;
             }
-            return sessionController;
         }
-    }
 
-    public static DeviceController Device
-    {
-        get
+        public static DeviceController Device
         {
-            if (deviceController == null)
+            get
             {
-                var deviceService = new DeviceService(Client);
-                deviceController = new DeviceController(deviceService);
+                if (deviceController == null)
+                {
+                    var deviceService = new DeviceService(Client);
+                    deviceController = new DeviceController(deviceService);
+                }
+                return deviceController;
             }
-            return deviceController;
         }
-    }
 
-    public static BrandingController Branding
-    {
-        get
+        public static BrandingController Branding
         {
-            if (brandingController == null)
+            get
             {
-                var brandingService = new BrandingService(Client);
-                brandingController = new BrandingController(brandingService);
+                if (brandingController == null)
+                {
+                    var brandingService = new BrandingService(Client);
+                    brandingController = new BrandingController(brandingService);
+                }
+                return brandingController;
             }
-            return brandingController;
         }
     }
 }
