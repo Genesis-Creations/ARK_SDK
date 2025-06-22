@@ -37,5 +37,17 @@ namespace ARK.SDK.Controllers.Session
                 throw new SDKException(ex.ErrorType, $"StartUserSessionAsync failed: {ex.Message}");
             }
         }
+
+        public async Task<bool> UpdateUserSessionAsync(string sessionId, ModuleResultData moduleResultData)
+        {
+            try
+            {
+                return await sessionService.UpdateUserSessionAsync(sessionId, moduleResultData);
+            }
+            catch (SDKException ex)
+            {
+                throw new SDKException(ex.ErrorType, $"UpdateUserSessionAsync failed: {ex.Message}");
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace ARK.SDK.Models.Result
+namespace ARK.SDK.Models.Session
 {
     public class ModuleResultData
     {

@@ -61,5 +61,28 @@ namespace ARK.SDK.Services.Session
                 throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
             }
         }
+
+        public async Task<bool> UpdateUserSessionAsync(string sessionId, ModuleResultData moduleResultData)
+        {
+            var variables = new UpdateUserSessionVariables(sessionId, moduleResultData);
+            string json = await client.ExecuteAsync(SessionQueries.UpdateUserSession, variables);
+
+            try
+            {
+                var result = JsonConvert.DeserializeObject<GraphQLResponse<bool>>(json);
+
+                if (result.errors != null && result.errors.Count > 0)
+                {
+                    string gqlError = result.errors[0].message;
+                    throw new SDKException(SDKErrorType.GraphQLError, gqlError);
+                }
+
+                return result.data;
+            }
+            catch (JsonException ex)
+            {
+                throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
+            }
+        }
     }
 }

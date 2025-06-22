@@ -26,5 +26,10 @@ namespace ARK.SDK.Queries.Session
         public const string StartUserSession = @"mutation StartUserSession($sessionId: String!) {
             startUserSession(sessionId: $sessionId)
         }";
+
+        public const string UpdateUserSession = @"
+            mutation updateUserSession($sessionId: String!, $updateUserSessionInput: UserSessionResultInput!) {
+            updateUserSession(sessionId: $sessionId, input: $updateUserSessionInput)
+                 }";
     }
 }

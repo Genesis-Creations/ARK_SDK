@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace ARK.SDK.Models.Result
+namespace ARK.SDK.Models.Session
 {
     public class InteractionResultData
     {

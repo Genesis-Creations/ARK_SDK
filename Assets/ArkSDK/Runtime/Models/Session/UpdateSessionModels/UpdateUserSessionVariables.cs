@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace ARK.SDK.Models.Result
+namespace ARK.SDK.Models.Session
 {
     public class UpdateUserSessionVariables : MonoBehaviour
     {
