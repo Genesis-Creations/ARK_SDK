@@ -11,8 +11,6 @@ ARK SDK is a modular **GraphQL SDK** for Unity, designed to handle authenticatio
 ## Requirements
 
 - Unity **2022.3.0** or later.
-- **UniTask**: For efficient async task handling.
-- **Newtonsoft.Json**: For JSON serialization.
 
 ## Installation
 
