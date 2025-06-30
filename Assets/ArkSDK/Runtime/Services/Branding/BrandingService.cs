@@ -15,7 +15,7 @@ namespace ARK.SDK.Services.Branding
             this.client = client;
         }
 
-        public async Task<BrandingResponse> BrandingAsync()
+        public async Task<BrandingResponse> GetBrandingAsync()
         {
             string json = await client.ExecuteAsync(BrandingQueries.Branding);
 

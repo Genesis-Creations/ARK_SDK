@@ -16,11 +16,11 @@ namespace ARK.SDK.Controllers.Branding
             this.brandingService = brandingService;
         }
 
-        public async Task<BrandingResponse> BrandingAsync()
+        public async Task<BrandingResponse> GetBrandingAsync()
         {
             try
             {
-                return await brandingService.BrandingAsync();
+                return await brandingService.GetBrandingAsync();
             }
             catch (SDKException ex)
             {

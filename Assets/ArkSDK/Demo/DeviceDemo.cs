@@ -3,26 +3,29 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeviceDemo : MonoBehaviour
+namespace ARK.SDK.Demo
 {
-    [Header("CheckDeviceId")]
-    public Button CheckDeviceIdButton;
-
-    public TMP_InputField deviceIdField;
-
-    private void OnEnable()
+    public class DeviceDemo : MonoBehaviour
     {
-        CheckDeviceIdButton.onClick.AddListener(CheckDeviceId);
-    }
+        [Header("CheckDeviceId")]
+        public Button CheckDeviceIdButton;
 
-    private void OnDisable()
-    {
-        CheckDeviceIdButton.onClick.RemoveListener(CheckDeviceId);
-    }
+        public TMP_InputField deviceIdField;
 
-    private async void CheckDeviceId()
-    {
-        var response = await ARKManager.Device.CheckDeviceIdAsync(deviceIdField.text);
-        Debug.Log($"CheckDeviceId : {response.CheckDeviceId}");
+        private void OnEnable()
+        {
+            CheckDeviceIdButton.onClick.AddListener(CheckDeviceId);
+        }
+
+        private void OnDisable()
+        {
+            CheckDeviceIdButton.onClick.RemoveListener(CheckDeviceId);
+        }
+
+        private async void CheckDeviceId()
+        {
+            var response = await ARKManager.Device.CheckDeviceIdAsync(deviceIdField.text);
+            Debug.Log($"CheckDeviceId : {response.CheckDeviceId}");
+        }
     }
 }
