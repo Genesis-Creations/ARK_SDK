@@ -15,7 +15,7 @@ namespace ARK.SDK.Services.Auth
             this.client = client;
         }
 
-        public async Task<string> LoginAsync(string email, string password)
+        public async Task<string> LoginWithMailAndPassowrdAsync(string email, string password)
         {
             var variables = new LoginVariables(email, password);
             string json = await client.ExecuteAsync(AuthQueries.Login, variables);

@@ -13,15 +13,15 @@ namespace ARK.SDK.Controllers.Auth
             this.authService = authService;
         }
 
-        public async Task<string> LoginAsync(string email, string password)
+        public async Task<string> LoginWithMailAndPassowrdAsync(string email, string password)
         {
             try
             {
-                return await authService.LoginAsync(email, password);
+                return await authService.LoginWithMailAndPassowrdAsync(email, password);
             }
             catch (SDKException ex)
             {
-                throw new SDKException(ex.ErrorType, $"LoginAsync failed: {ex.Message}");
+                throw new SDKException(ex.ErrorType, $"LoginWithMailAndPassowrdAsync failed: {ex.Message}");
             }
         }
 
