@@ -1,6 +1,6 @@
+using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;
-using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine.Networking;
 
 namespace ARK.SDK.Core

@@ -6,33 +6,33 @@ namespace ARK.SDK.Models.Session
     public class InteractionResultData
     {
         [JsonProperty("_id")]
-        public string Id { get; private set; }
+        public string Id { get; set; }
 
         [JsonProperty("completed")]
-        public float Completed { get; private set; }
+        public float Completed { get; set; }
 
         [JsonProperty("completionRatio")]
-        public float CompletionRatio { get; private set; }
+        public float CompletionRatio { get; set; }
 
         [JsonProperty("compliance")]
-        public float Compliance { get; private set; }
+        public float Compliance { get; set; }
 
         [JsonProperty("complianceRatio")]
-        public float ComplianceRatio { get; private set; }
+        public float ComplianceRatio { get; set; }
         
         [JsonProperty("duration")]
-        public int Duration { get; private set; }
+        public int Duration { get; set; }
         
         [JsonProperty("score")]
-        public float Score { get; private set; }
+        public float Score { get; set; }
 
         [JsonProperty("steps")]
-        public List<StepResultData> Steps { get; private set; }
+        public List<StepResultData> Steps { get; set; }
 
         [JsonProperty("success")]
-        public bool Success { get; private set; }
+        public bool Success { get; set; }
 
         [JsonProperty("total")]
-        public float Total { get; private set; }
+        public float Total { get; set; }
     }
 }

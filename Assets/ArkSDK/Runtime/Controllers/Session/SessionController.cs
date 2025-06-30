@@ -38,11 +38,11 @@ namespace ARK.SDK.Controllers.Session
             }
         }
 
-        public async Task<bool> UpdateUserSessionAsync(string sessionId, ModuleResultData moduleResultData)
+        public async Task<bool> UpdateUserSessionAsync(string sessionId, UserSessionResultInput userSessionResultInput)
         {
             try
             {
-                return await sessionService.UpdateUserSessionAsync(sessionId, moduleResultData);
+                return await sessionService.UpdateUserSessionAsync(sessionId, userSessionResultInput);
             }
             catch (SDKException ex)
             {

@@ -62,9 +62,9 @@ namespace ARK.SDK.Services.Session
             }
         }
 
-        public async Task<bool> UpdateUserSessionAsync(string sessionId, ModuleResultData moduleResultData)
+        public async Task<bool> UpdateUserSessionAsync(string sessionId, UserSessionResultInput userSessionResultInput)
         {
-            var variables = new UpdateUserSessionVariables(sessionId, moduleResultData);
+            var variables = new UpdateUserSessionVariables(sessionId, userSessionResultInput);
             string json = await client.ExecuteAsync(SessionQueries.UpdateUserSession, variables);
 
             try

@@ -5,12 +5,12 @@ namespace ARK.SDK.Models.Session
     public class StepResultData
     {
         [JsonProperty("completed")]
-        public bool Completed { get; private set; }
+        public bool Completed { get; set; }
 
         [JsonProperty("compliance")]
-        public bool Compliance { get; private set; }
+        public bool Compliance { get; set; }
 
         [JsonProperty("title")]
-        public string Title { get; private set; }
+        public string Title { get; set; }
     }
 }

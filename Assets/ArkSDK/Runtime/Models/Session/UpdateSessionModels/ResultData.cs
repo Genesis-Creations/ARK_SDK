@@ -1,10 +1,13 @@
+using Newtonsoft.Json;
+
 namespace ARK.SDK.Models.Session
 {
-    public class Results
+    public class UserSessionResult
     {
-        public ModuleResultData Module { get; set; }
+        [JsonProperty("module")]
+        public ModuleResultInput Module { get; set; }
 
-        public Results(ModuleResultData module)
+        public UserSessionResult(ModuleResultInput module)
         {
             Module = module;
         }

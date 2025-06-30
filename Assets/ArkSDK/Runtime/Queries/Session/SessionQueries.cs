@@ -28,8 +28,8 @@ namespace ARK.SDK.Queries.Session
         }";
 
         public const string UpdateUserSession = @"
-            mutation updateUserSession($sessionId: String!, $updateUserSessionInput: UserSessionResultInput!) {
-            updateUserSession(sessionId: $sessionId, input: $updateUserSessionInput)
-                 }";
+            mutation UpdateUserSession($sessionId: String!, $input: UserSessionResultInput!) {
+              updateUserSession(sessionId: $sessionId, input: $input)
+            }";
     }
 }
