@@ -1,12 +1,11 @@
-using ARK.SDK.Models.Auth;
 using Newtonsoft.Json;
 using System;
 
 namespace ARK.SDK.Models.Content
 {
-    public class AddCourseResponse
+    public class EditCourseResponse
     {
-        [JsonProperty("addCourse")]
+        [JsonProperty("editCourse")]
         public CourseData CourseData { get; private set; }
     }
 }

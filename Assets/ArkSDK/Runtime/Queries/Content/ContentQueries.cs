@@ -14,5 +14,18 @@ namespace ARK.SDK.Queries.Content
                 name
               }
             }";
+
+        public const string EditCourse = @"
+        mutation EditCourse($input: EditCourseInput!) {
+              editCourse(input: $input) {
+                _id
+                description
+                displayName
+                image
+                isDemo
+                labels
+                name
+              }
+            }";
     }
 }

@@ -25,5 +25,17 @@ namespace ARK.SDK.Controllers.Content
                 throw new SDKException(ex.ErrorType, $"AddCourseAsync failed: {ex.Message}");
             }
         }
+
+        public async Task<EditCourseResponse> EditCourseAsync(EditCourseInput editCourseInput)
+        {
+            try
+            {
+                return await contentService.EditCourseAsync(editCourseInput);
+            }
+            catch (SDKException ex)
+            {
+                throw new SDKException(ex.ErrorType, $"EditCourseAsync failed: {ex.Message}");
+            }
+        }
     }
 }
