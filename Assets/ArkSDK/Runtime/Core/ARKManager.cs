@@ -1,9 +1,11 @@
 using ARK.SDK.Controllers.Auth;
 using ARK.SDK.Controllers.Branding;
+using ARK.SDK.Controllers.Content;
 using ARK.SDK.Controllers.Device;
 using ARK.SDK.Controllers.Session;
 using ARK.SDK.Services.Auth;
 using ARK.SDK.Services.Branding;
+using ARK.SDK.Services.Content;
 using ARK.SDK.Services.Device;
 using ARK.SDK.Services.Session;
 using UnityEngine;
@@ -25,6 +27,8 @@ namespace ARK.SDK.Core
         private static DeviceController deviceController;
 
         private static BrandingController brandingController;
+
+        private static ContentController contentController;
 
         private static bool IsInitialized = false;
 
@@ -119,6 +123,19 @@ namespace ARK.SDK.Core
                     brandingController = new BrandingController(brandingService);
                 }
                 return brandingController;
+            }
+        }
+
+        public static ContentController Content
+        {
+            get
+            {
+                if (contentController == null)
+                {
+                    var contentService = new ContentService(Client);
+                    contentController = new ContentController(contentService);
+                }
+                return contentController;
             }
         }
     }

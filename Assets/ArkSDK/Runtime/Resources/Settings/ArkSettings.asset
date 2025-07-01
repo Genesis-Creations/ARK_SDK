@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baae6c66003ee7b49ac202ca8854afda, type: 3}
   m_Name: ArkSettings
   m_EditorClassIdentifier: 
-  graphqlUrl: http://vrc.genesiscreations.co:5000/graphql
+  graphqlUrl: https://ark-dev.genesiscreations.co/graphql
