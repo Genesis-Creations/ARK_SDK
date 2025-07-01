@@ -19,7 +19,7 @@ namespace ARK.SDK.Services.Device
         public async Task<CheckDeviceIdResponse> CheckDeviceIdAsync(string deviceId)
         {
             var variables = new CheckDeviceIdVariables(deviceId);
-            string json = await client.ExecuteAsync(DeviceQueries.CheckDeviceId);
+            string json = await client.ExecuteAsync(DeviceQueries.CheckDeviceId, variables);
 
             try
             {
