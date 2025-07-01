@@ -12,11 +12,11 @@ namespace ARK.SDK.Demo
             AddCourseInput addCourseInput = new AddCourseInput()
             {
                 Description = "This is a demo course",
-                DisplayName = "Demo Course11",
+                DisplayName = "Demo Course14",
                 Image = "https://example.com/image.png",
                 IsDemo = true,
                 Labels = new string[] { "demo", "course" },
-                Name = "Demo Course Name11",
+                Name = "Demo Course Name14",
                 Organization = "670b73dee7636d86d195eef0"
             };
 
@@ -30,19 +30,13 @@ namespace ARK.SDK.Demo
         {
             EditCourseInput editCourseInput = new EditCourseInput()
             {
-                Id = "68639cc1942c8c72826dbba6", 
-                Description = "This is an edited again demo course",
-                DisplayName = "Demo Course11",
-                Image = "https://example.com/image.png",
-                IsDemo = true,
-                Labels = new string[] { "demo", "course" },
-                Name = "Demo Course Name11",
-                Organization = "670b73dee7636d86d195eef0"
+                Id = "6863d1e1a329e25595146ec7", 
+                Description = "This is an demo course"
             };
 
             var result = await ARKManager.Content.EditCourseAsync(editCourseInput);
 
-            Debug.Log($"Course Added: {result.CourseData.Description}");
+            Debug.Log($"Course Edited: {result.CourseData.Description}");
         }
     }
 }

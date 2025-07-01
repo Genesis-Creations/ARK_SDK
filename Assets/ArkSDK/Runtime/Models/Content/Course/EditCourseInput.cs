@@ -17,7 +17,7 @@ namespace ARK.SDK.Models.Content
         public string Image { get; set; }
 
         [JsonProperty("isDemo")]
-        public bool IsDemo { get; set; }
+        public bool? IsDemo { get; set; }
 
         [JsonProperty("labels")]
         public string[] Labels { get; set; }
@@ -27,8 +27,5 @@ namespace ARK.SDK.Models.Content
 
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        [JsonProperty("organization")]
-        public string Organization { get; set; } // Organization ID
     }
 }

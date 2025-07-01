@@ -18,7 +18,10 @@ namespace ARK.SDK.Core
         public async Task<string> ExecuteAsync(string query, object variables = null)
         {
             var payload = new { query, variables };
-            string jsonPayload = JsonConvert.SerializeObject(payload);
+            string jsonPayload = JsonConvert.SerializeObject(payload, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
 
             using var request = new UnityWebRequest(endpoint, "POST");
             byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
