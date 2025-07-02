@@ -24,4 +24,4 @@ To add the ARK SDK to your Unity project, follow these steps:
 Open Unity Package Manager and select Add package from git URL... and paste this link
 
 ```json
-https://github.com/Genesis-Creations/ARK_SDK.git?path=Assets/ArkSDK"
+https://github.com/Genesis-Creations/ARK_SDK.git?path=Assets/ArkSDK
