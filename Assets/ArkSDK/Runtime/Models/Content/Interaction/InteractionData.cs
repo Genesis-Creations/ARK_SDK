@@ -17,7 +17,7 @@ namespace ARK.SDK.Models.Content
         public string Name { get; set; }
 
         [JsonProperty("duration")]
-        public int Duration { get; set; }
+        public int? Duration { get; set; }
 
         [JsonProperty("score")]
         public int Score { get; set; }

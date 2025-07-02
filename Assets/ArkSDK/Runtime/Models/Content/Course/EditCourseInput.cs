@@ -27,5 +27,8 @@ namespace ARK.SDK.Models.Content
 
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("organization")]
+        public string Organization { get; set; } // Organization ID
     }
 }
