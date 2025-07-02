@@ -1,55 +1,55 @@
 using ARK.SDK.Core;
 using ARK.SDK.Models.Content;
 using Newtonsoft.Json;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ContentAddInteractionDemo : MonoBehaviour
+namespace ARK.SDK.Demo
 {
-    public TMP_InputField ModuleIdInput;
-
-    public TMP_InputField InteractionNameInput;
-    public TMP_InputField InteractionDescriptionInput;
-    public TMP_InputField InteractionDisplayNameInput;
-    public TMP_InputField ModuleDurationInput;
-    public TMP_InputField ModuleScoreInput;
-    public Button AddInteractionButton;
-
-    private void OnEnable()
+    public class ContentAddInteractionDemo : MonoBehaviour
     {
-        AddInteractionButton.onClick.AddListener(AddInteraction);
-    }
+        public TMP_InputField ModuleIdInput;
 
-    private void OnDisable()
-    {
-        AddInteractionButton.onClick.RemoveListener(AddInteraction);
-    }
+        public TMP_InputField InteractionNameInput;
+        public TMP_InputField InteractionDescriptionInput;
+        public TMP_InputField InteractionDisplayNameInput;
+        public TMP_InputField ModuleDurationInput;
+        public TMP_InputField ModuleScoreInput;
+        public Button AddInteractionButton;
 
-    public async void AddInteraction()
-    {
-        var moduleId = ModuleIdInput.text;
-        var name = InteractionNameInput.text;
-        var displayName = InteractionDisplayNameInput.text;
-        var description = InteractionDescriptionInput.text;
-        var duration = ModuleDurationInput.text;
-        var score = ModuleScoreInput.text;
-
-        AddInteractionInput addInteractionInput = new AddInteractionInput()
+        private void OnEnable()
         {
-            ModuleId = moduleId,
-            Name = name,
-            DisplayName = displayName,
-            Description = description,
-            Duration = string.IsNullOrEmpty(duration) ? 0 : int.Parse(duration),
-            Score = string.IsNullOrEmpty(score) ? 0 : int.Parse(score) 
+            AddInteractionButton.onClick.AddListener(AddInteraction);
+        }
 
-        };
+        private void OnDisable()
+        {
+            AddInteractionButton.onClick.RemoveListener(AddInteraction);
+        }
 
-        var result = await ARKManager.Content.AddInteractionAsync(addInteractionInput);
+        public async void AddInteraction()
+        {
+            var moduleId = ModuleIdInput.text;
+            var name = InteractionNameInput.text;
+            var displayName = InteractionDisplayNameInput.text;
+            var description = InteractionDescriptionInput.text;
+            var duration = ModuleDurationInput.text;
+            var score = ModuleScoreInput.text;
 
-        Debug.Log($"Interaction Added: {JsonConvert.SerializeObject(result.InteractionData)}");
+            AddInteractionInput addInteractionInput = new AddInteractionInput()
+            {
+                ModuleId = moduleId,
+                Name = name,
+                DisplayName = displayName,
+                Description = description,
+                Duration = string.IsNullOrEmpty(duration) ? 0 : int.Parse(duration),
+                Score = string.IsNullOrEmpty(score) ? 0 : int.Parse(score)
+            };
+
+            var result = await ARKManager.Content.AddInteractionAsync(addInteractionInput);
+
+            Debug.Log($"Interaction Added: {JsonConvert.SerializeObject(result.InteractionData)}");
+        }
     }
 }

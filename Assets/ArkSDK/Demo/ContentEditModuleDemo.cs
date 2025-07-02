@@ -7,48 +7,51 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ContentEditModuleDemo : MonoBehaviour
+namespace ARK.SDK.Demo
 {
-    public TMP_InputField ModuleIdInput;
-
-    public TMP_InputField CourseIdInput;
-    public TMP_InputField ModuleNameInput;
-    public TMP_InputField ModuleDescriptionInput;
-    public TMP_InputField ModuleDisplayNameInput;
-    public TMP_InputField ModuleInteractionsInput; // Comma-separated module IDs (optional)
-    public Button EditModuleButton;
-
-    private void OnEnable()
+    public class ContentEditModuleDemo : MonoBehaviour
     {
-        EditModuleButton.onClick.AddListener(EditModule);
-    }
+        public TMP_InputField ModuleIdInput;
 
-    private void OnDisable()
-    {
-        EditModuleButton.onClick.RemoveListener(EditModule);
-    }
+        public TMP_InputField CourseIdInput;
+        public TMP_InputField ModuleNameInput;
+        public TMP_InputField ModuleDescriptionInput;
+        public TMP_InputField ModuleDisplayNameInput;
+        public TMP_InputField ModuleInteractionsInput; // Comma-separated module IDs (optional)
+        public Button EditModuleButton;
 
-    public async void EditModule()
-    {
-        var moduleId = ModuleIdInput.text; // Module ID to be edited
-        var courseId = CourseIdInput.text; // Course ID to which the module will be added
-        var name = ModuleNameInput.text;
-        var displayName = ModuleDisplayNameInput.text;
-        var description = ModuleDescriptionInput.text;
-        var interactions = ModuleInteractionsInput.text.Split(new[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries);
-
-        EditModuleInput editModuleInput = new EditModuleInput()
+        private void OnEnable()
         {
-            Id = moduleId, // Required
-            CourseId = courseId, // Required
-            Name = name,
-            DisplayName = displayName,
-            Description = description,
-            Interactions = interactions.Length > 0 ? interactions : null // Optional
-        };
+            EditModuleButton.onClick.AddListener(EditModule);
+        }
 
-        var result = await ARKManager.Content.EditModuleAsync(editModuleInput);
+        private void OnDisable()
+        {
+            EditModuleButton.onClick.RemoveListener(EditModule);
+        }
 
-        Debug.Log($"Module Edited: {JsonConvert.SerializeObject(result.ModuleData)}");
+        public async void EditModule()
+        {
+            var moduleId = ModuleIdInput.text; // Module ID to be edited
+            var courseId = CourseIdInput.text; // Course ID to which the module will be added
+            var name = ModuleNameInput.text;
+            var displayName = ModuleDisplayNameInput.text;
+            var description = ModuleDescriptionInput.text;
+            var interactions = ModuleInteractionsInput.text.Split(new[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+            EditModuleInput editModuleInput = new EditModuleInput()
+            {
+                Id = moduleId, // Required
+                CourseId = courseId, // Required
+                Name = name,
+                DisplayName = displayName,
+                Description = description,
+                Interactions = interactions.Length > 0 ? interactions : null // Optional
+            };
+
+            var result = await ARKManager.Content.EditModuleAsync(editModuleInput);
+
+            Debug.Log($"Module Edited: {JsonConvert.SerializeObject(result.ModuleData)}");
+        }
     }
 }

@@ -7,52 +7,55 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ContentEditInteractionDemo : MonoBehaviour
+namespace ARK.SDK.Demo
 {
-    public TMP_InputField InteractionIdInput;
-
-    public TMP_InputField ModuleIdInput;
-    public TMP_InputField InteractionNameInput;
-    public TMP_InputField InteractionDescriptionInput;
-    public TMP_InputField InteractionDisplayNameInput;
-    public TMP_InputField ModuleDurationInput;
-    public TMP_InputField ModuleScoreInput;
-    public Button EditInteractionButton;
-
-    private void OnEnable()
+    public class ContentEditInteractionDemo : MonoBehaviour
     {
-        EditInteractionButton.onClick.AddListener(EditInteraction);
-    }
+        public TMP_InputField InteractionIdInput;
 
-    private void OnDisable()
-    {
-        EditInteractionButton.onClick.RemoveListener(EditInteraction);
-    }
+        public TMP_InputField ModuleIdInput;
+        public TMP_InputField InteractionNameInput;
+        public TMP_InputField InteractionDescriptionInput;
+        public TMP_InputField InteractionDisplayNameInput;
+        public TMP_InputField ModuleDurationInput;
+        public TMP_InputField ModuleScoreInput;
+        public Button EditInteractionButton;
 
-    public async void EditInteraction()
-    {
-        var interactionId = InteractionIdInput.text;
-        var moduleId = ModuleIdInput.text;
-        var name = InteractionNameInput.text;
-        var displayName = InteractionDisplayNameInput.text;
-        var description = InteractionDescriptionInput.text;
-        var duration = ModuleDurationInput.text;
-        var score = ModuleScoreInput.text;
-
-        EditInteractionInput editInteractionInput = new EditInteractionInput()
+        private void OnEnable()
         {
-            Id = interactionId,
-            ModuleId = moduleId,
-            Name = name,
-            DisplayName = displayName,
-            Description = description,
-            Duration = string.IsNullOrEmpty(duration) ? 0 : int.Parse(duration),
-            Score = string.IsNullOrEmpty(score) ? 0 : int.Parse(score)
+            EditInteractionButton.onClick.AddListener(EditInteraction);
+        }
 
-        };
+        private void OnDisable()
+        {
+            EditInteractionButton.onClick.RemoveListener(EditInteraction);
+        }
 
-        var result = await ARKManager.Content.EditInteractionAsync(editInteractionInput);
+        public async void EditInteraction()
+        {
+            var interactionId = InteractionIdInput.text;
+            var moduleId = ModuleIdInput.text;
+            var name = InteractionNameInput.text;
+            var displayName = InteractionDisplayNameInput.text;
+            var description = InteractionDescriptionInput.text;
+            var duration = ModuleDurationInput.text;
+            var score = ModuleScoreInput.text;
 
-        Debug.Log($"Interaction Edited: {JsonConvert.SerializeObject(result.InteractionData)}");
+            EditInteractionInput editInteractionInput = new EditInteractionInput()
+            {
+                Id = interactionId,
+                ModuleId = moduleId,
+                Name = name,
+                DisplayName = displayName,
+                Description = description,
+                Duration = string.IsNullOrEmpty(duration) ? 0 : int.Parse(duration),
+                Score = string.IsNullOrEmpty(score) ? 0 : int.Parse(score)
+
+            };
+
+            var result = await ARKManager.Content.EditInteractionAsync(editInteractionInput);
+
+            Debug.Log($"Interaction Edited: {JsonConvert.SerializeObject(result.InteractionData)}");
+        }
     }
 }
