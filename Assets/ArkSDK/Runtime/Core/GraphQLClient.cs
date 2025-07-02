@@ -29,8 +29,8 @@ namespace ARK.SDK.Core
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
 
-            if (!string.IsNullOrEmpty(ARKCache.AuthToken))
-                request.SetRequestHeader("Authorization", $"Bearer {ARKCache.AuthToken}");
+            if (ARKCache.Auth != null)
+                request.SetRequestHeader("Authorization", $"Bearer {ARKCache.Auth.AccessToken}");
 
             return await SendRequestAsync(request);
         }

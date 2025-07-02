@@ -30,7 +30,7 @@ namespace ARK.SDK.Services.Auth
                     throw new SDKException(SDKErrorType.GraphQLError, gqlError);
                 }
 
-                ARKCache.CacheAuthToken(result.data.Login.AccessToken);
+                ARKCache.CacheAuthToken(result.data.Login);
 
                 return result.data.Login.AccessToken;
             }
@@ -55,7 +55,7 @@ namespace ARK.SDK.Services.Auth
                     throw new SDKException(SDKErrorType.GraphQLError, gqlError);
                 }
 
-                ARKCache.CacheAuthToken(result.data.Login.AccessToken);
+                ARKCache.CacheAuthToken(result.data.Login);
 
                 return result.data.Login.AccessToken;
             }

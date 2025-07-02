@@ -1,4 +1,5 @@
 using ARK.SDK.Core;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,13 +34,13 @@ namespace ARK.SDK.Demo
         private async void LoginWithPinCode()
         {
             await ARKManager.Auth.LoginWithPinCodeAsync(pinCodeInputField.text);
-            Debug.Log($"Auth Token : {ARKCache.AuthToken}");
+            Debug.Log($"Auth Token : {JsonConvert.SerializeObject(ARKCache.Auth)}");
         }
 
         private async void LoginWithEmailAndPassword()
         {
             await ARKManager.Auth.LoginWithMailAndPassowrdAsync(emailInputField.text, passwordInputField.text);
-            Debug.Log($"Auth Token : {ARKCache.AuthToken}");
+            Debug.Log($"Auth Token : {JsonConvert.SerializeObject(ARKCache.Auth)}");
         }
     }
 }

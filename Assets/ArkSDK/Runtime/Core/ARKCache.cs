@@ -1,3 +1,4 @@
+using ARK.SDK.Models.Auth;
 using ARK.SDK.Models.Branding;
 using ARK.SDK.Models.Session;
 
@@ -5,13 +6,13 @@ namespace ARK.SDK.Core
 {
     public static class ARKCache
     {
-        public static string AuthToken { get; private set; }
+        public static LoginData Auth { get; private set; }
         public static SessionData Session { get; private set; }
         public static BrandingData Branding { get; private set; }
 
-        public static void CacheAuthToken(string token)
+        public static void CacheAuthToken(LoginData loginData)
         {
-            AuthToken = token;
+            Auth = loginData;
         }
 
         public static void CacheSession(SessionData session)
@@ -25,7 +26,7 @@ namespace ARK.SDK.Core
 
         public static void Clear()
         {
-            AuthToken = null;
+            Auth = null;
             Session = null;
         }
     }

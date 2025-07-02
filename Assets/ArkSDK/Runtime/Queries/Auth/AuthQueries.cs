@@ -6,6 +6,7 @@ namespace ARK.SDK.Queries.Auth
         mutation LoginAsync($email: String!, $password: String!) {
             login(email: $email, password: $password) {
                 accessToken
+                refreshToken
             }
         }";
 
@@ -14,6 +15,7 @@ namespace ARK.SDK.Queries.Auth
         {
             loginWithPincode(pincode: $pincode) {
                 accessToken
+                refreshToken
             }
         }";
     }
