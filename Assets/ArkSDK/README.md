@@ -4,9 +4,11 @@ ARK SDK is a modular **GraphQL SDK** for Unity, designed to handle authenticatio
 
 ## Features
 
-- **Authentication**: Log in and manage user sessions.
-- **GraphQL Queries**: Send queries to interact with your backend.
-- **Modular**: Easily extendable for other GraphQL operations.
+- **Authentication**: User login and token management..
+- **Session Management**: Start, update, and retrieve user sessions.
+- **Content Management**: Add, edit, and retrieve courses, modules, and interactions.
+- **Device Management**:  Register and manage devices.
+- **Branding**:  Retrieve and apply branding information.
 
 ## Requirements
 
@@ -18,12 +20,8 @@ To add the ARK SDK to your Unity project, follow these steps:
 
 ### 1. **Add the SDK to Your Project**
 
-#### Option 1: Using GitHub (recommended for UPM-based dependencies)
-Add the following line to your project's **`Packages/manifest.json`** under the `dependencies` section:
+#### Using GitHub (recommended for UPM-based dependencies)
+Open Unity Package Manager and select Add package from git URL... and paste this link
 
 ```json
-{
-  "dependencies": {
-    "com.genesis.arksdk": "https://github.com/Genesis-Creations/ARK_SDK.git?path=Assets/ArkSDK"
-  }
-}
+https://github.com/Genesis-Creations/ARK_SDK.git?path=Assets/ArkSDK"
