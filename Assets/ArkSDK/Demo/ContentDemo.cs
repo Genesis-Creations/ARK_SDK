@@ -38,5 +38,21 @@ namespace ARK.SDK.Demo
 
             Debug.Log($"Course Edited: {result.CourseData.Description}");
         }
+
+        [ContextMenu("AddModule")]
+        public async void AddModule()
+        {
+            AddModuleInput addModuleInput = new AddModuleInput()
+            {
+                CourseId = "670b73e4e7636d86d196008c",
+                Description = "Added Module Desc2",
+                DisplayName = "Added Module2",
+                Name = "Added Module Name2",
+            };
+
+            var result = await ARKManager.Content.AddModuleAsync(addModuleInput);
+
+            Debug.Log($"Course Added: {result.ModuleData.Id}");
+        }
     }
 }

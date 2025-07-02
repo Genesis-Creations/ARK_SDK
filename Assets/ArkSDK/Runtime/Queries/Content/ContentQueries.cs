@@ -27,5 +27,66 @@ namespace ARK.SDK.Queries.Content
                 name
               }
             }";
+
+        public const string AddModule = @"
+        mutation AddModule($input: AddModuleInput!) {
+              addModule(input: $input) {
+                _id
+                displayName
+                name
+                description
+                interactions {
+                  _id
+                  description
+                  displayName
+                  duration
+                  name
+                  score
+                }
+              }
+            }";
+
+        public const string EditModule = @"
+        mutation EditModule($input: EditModuleInput!) {
+              editModule(input: $input) {
+                _id
+                displayName
+                name
+                description
+                interactions {
+                  _id
+                  description
+                  displayName
+                  duration
+                  name
+                  score
+                }
+              }
+            }";
+
+        public const string AddInteraction = @"
+        mutation AddInteraction($input: AddInteractionInput!) {
+              addInteraction(input: $input) {
+                _id
+                displayName
+                name
+                description
+                score
+                duration
+              }
+            }";
+
+        public const string EditInteraction = @"
+        mutation EditInteraction($input: EditInteractionInput!) {
+              editInteraction(input: $input) {
+                _id
+                description
+                displayName
+                duration
+                name
+                score
+              }
+            }";
+
     }
 }

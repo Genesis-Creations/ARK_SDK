@@ -1,3 +1,4 @@
+using ARK.SDK.Models.Content;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 

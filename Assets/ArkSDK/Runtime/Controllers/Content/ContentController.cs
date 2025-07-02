@@ -37,5 +37,53 @@ namespace ARK.SDK.Controllers.Content
                 throw new SDKException(ex.ErrorType, $"EditCourseAsync failed: {ex.Message}");
             }
         }
+
+        public async Task<AddModuleResponse> AddModuleAsync(AddModuleInput addModuleInput)
+        {
+            try
+            {
+                return await contentService.AddModuleAsync(addModuleInput);
+            }
+            catch (SDKException ex)
+            {
+                throw new SDKException(ex.ErrorType, $"AddModuleAsync failed: {ex.Message}");
+            }
+        }
+
+        public async Task<EditModuleResponse> EditModuleAsync(EditModuleInput editModuleInput)
+        {
+            try
+            {
+                return await contentService.EditModuleAsync(editModuleInput);
+            }
+            catch (SDKException ex)
+            {
+                throw new SDKException(ex.ErrorType, $"EditModuleAsync failed: {ex.Message}");
+            }
+        }
+
+        public async Task<AddInteractionResponse> AddInteractionAsync(AddInteractionInput addInteractionInput)
+        {
+            try
+            {
+                return await contentService.AddInteractionAsync(addInteractionInput);
+            }
+            catch (SDKException ex)
+            {
+                throw new SDKException(ex.ErrorType, $"AddInteractionAsync failed: {ex.Message}");
+            }
+        }
+
+        public async Task<EditInteractionResponse> EditInteractionAsync(EditInteractionInput editInteractionInput)
+        {
+            try
+            {
+                return await contentService.EditInteractionAsync(editInteractionInput);
+            }
+            catch (SDKException ex)
+            {
+                throw new SDKException(ex.ErrorType, $"EditInteractionAsync failed: {ex.Message}");
+            }
+        }
     }
 }

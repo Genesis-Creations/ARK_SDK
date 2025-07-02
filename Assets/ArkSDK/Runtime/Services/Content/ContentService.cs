@@ -60,5 +60,97 @@ namespace ARK.SDK.Services.Content
                 throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
             }
         }
+
+        public async Task<AddModuleResponse> AddModuleAsync(AddModuleInput addModuleInput)
+        {
+            var variables = new AddModuleVariables(addModuleInput);
+            string json = await client.ExecuteAsync(ContentQueries.AddModule, variables);
+
+            try
+            {
+                var result = JsonConvert.DeserializeObject<GraphQLResponse<AddModuleResponse>>(json);
+
+                if (result.errors != null && result.errors.Count > 0)
+                {
+                    string gqlError = result.errors[0].message;
+                    throw new SDKException(SDKErrorType.GraphQLError, gqlError);
+                }
+
+                return result.data;
+            }
+            catch (JsonException ex)
+            {
+                throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
+            }
+        }
+
+        public async Task<EditModuleResponse> EditModuleAsync(EditModuleInput editModuleInput)
+        {
+            var variables = new EditModuleVariables(editModuleInput);
+            string json = await client.ExecuteAsync(ContentQueries.EditModule, variables);
+
+            try
+            {
+                var result = JsonConvert.DeserializeObject<GraphQLResponse<EditModuleResponse>>(json);
+
+                if (result.errors != null && result.errors.Count > 0)
+                {
+                    string gqlError = result.errors[0].message;
+                    throw new SDKException(SDKErrorType.GraphQLError, gqlError);
+                }
+
+                return result.data;
+            }
+            catch (JsonException ex)
+            {
+                throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
+            }
+        }
+
+        public async Task<AddInteractionResponse> AddInteractionAsync(AddInteractionInput addInteractionInput)
+        {
+            var variables = new AddInteractionVariables(addInteractionInput);
+            string json = await client.ExecuteAsync(ContentQueries.AddInteraction, variables);
+
+            try
+            {
+                var result = JsonConvert.DeserializeObject<GraphQLResponse<AddInteractionResponse>>(json);
+
+                if (result.errors != null && result.errors.Count > 0)
+                {
+                    string gqlError = result.errors[0].message;
+                    throw new SDKException(SDKErrorType.GraphQLError, gqlError);
+                }
+
+                return result.data;
+            }
+            catch (JsonException ex)
+            {
+                throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
+            }
+        }
+
+        public async Task<EditInteractionResponse> EditInteractionAsync(EditInteractionInput editInteractionInput)
+        {
+            var variables = new EditInteractionVariables(editInteractionInput);
+            string json = await client.ExecuteAsync(ContentQueries.EditInteraction, variables);
+
+            try
+            {
+                var result = JsonConvert.DeserializeObject<GraphQLResponse<EditInteractionResponse>>(json);
+
+                if (result.errors != null && result.errors.Count > 0)
+                {
+                    string gqlError = result.errors[0].message;
+                    throw new SDKException(SDKErrorType.GraphQLError, gqlError);
+                }
+
+                return result.data;
+            }
+            catch (JsonException ex)
+            {
+                throw new SDKException(SDKErrorType.ParsingError, "Invalid server response format: " + ex.Message);
+            }
+        }
     }
 }
