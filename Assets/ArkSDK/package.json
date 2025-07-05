@@ -12,5 +12,12 @@
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "3.0.2",
     "com.unity.textmeshpro": "3.0.6"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "ARK SDK Sample",
+      "description": "A sample scene demonstrating how to use the ARK SDK for authentication and session management.",
+      "path": "Assets/ARK_SDK/Samples/Demo"
+    }
+  ]
 }
