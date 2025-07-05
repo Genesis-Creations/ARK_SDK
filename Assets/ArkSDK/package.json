@@ -15,8 +15,8 @@
   },
   "samples": [
     {
-      "displayName": "ARK SDK Sample",
-      "description": "A sample scene demonstrating how to use the ARK SDK for authentication and session management.",
+      "displayName": "All_In_One_Sample",
+      "description": "A sample scene demonstrating how to use the ARK SDK for all services.",
       "path": "Runtime/Samples/Demo"
     }
   ]

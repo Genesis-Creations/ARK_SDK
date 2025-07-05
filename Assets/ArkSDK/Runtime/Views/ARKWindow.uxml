@@ -1,9 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Gensis/ARK_SDK/Runtime/Views/ARKWindow.uss?fileID=7433441132597879392&amp;guid=e7b661da04705b447b2b5a3c0251b189&amp;type=3#ARKWindow" />
-    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-        <ui:VisualElement name="ContentContainer" class="content" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
-        <ui:VisualElement name="FooterContainer" class="footer-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="Version 1.0.0" display-tooltip-when-elided="true" style="color: rgb(0, 0, 0);" />
-        </ui:VisualElement>
-    </ui:VisualElement>
-</ui:UXML>

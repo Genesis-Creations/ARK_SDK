@@ -14,12 +14,10 @@ namespace ARK.SDK.Core
 {
     public static class ARKManager
     {
-        // GraphQL URL, loaded via ScriptableObject
         private static ArkSettings arkSettings;
 
         private static GraphQLClient client;
 
-        // Singleton-like pattern for controllers
         private static AuthController authController;
 
         private static SessionController sessionController;
@@ -42,7 +40,13 @@ namespace ARK.SDK.Core
 
         private static void Initialize()
         {
-            arkSettings = Resources.Load<ArkSettings>("Settings/ArkSettings");
+            if (arkSettings == null)
+            {
+                arkSettings = ArkSettings.GetOrCreateSettings(); // Initialize the settings
+            }
+
+
+            //arkSettings = Resources.Load<ArkSettings>("Settings/ArkSettings");
 
             if (arkSettings == null)
             {
@@ -67,7 +71,7 @@ namespace ARK.SDK.Core
                         return null;
                     }
 
-                    client = new GraphQLClient(arkSettings.GraphQLUrl);
+                    client = new GraphQLClient(arkSettings.GraphQLURL);
                 }
                 return client;
             }
