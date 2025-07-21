@@ -31,28 +31,33 @@ public class ArkSettings : ScriptableObject
     public static ArkSettings GetOrCreateSettings()
     {
         // Path to the Resources folder
-        string resourcesPath = "Assets/ArkSDK";
-
-        // Check if the Resources folder exists, if not, create it
+        string resourcesPath = "Assets/ArkSDK/Runtime/Resources";
         if (!Directory.Exists(resourcesPath))
         {
-            Directory.CreateDirectory(resourcesPath); // Create Resources folder if it doesn't exist
+            Directory.CreateDirectory(resourcesPath);
         }
-
         // Path to the actual settings asset inside Resources
-        string assetPath = "Assets/ArkSDK/ArkSettings.asset";
-
-        // Load the existing asset if it already exists
+        string assetPath = "Assets/ArkSDK/Runtime/Resources/ArkSettings.asset";
+        // Try to load the asset from the AssetDatabase
         ArkSettings settings = AssetDatabase.LoadAssetAtPath<ArkSettings>(assetPath);
-
         if (settings == null)
         {
             // Create the settings asset if it does not exist
             settings = CreateInstance<ArkSettings>();
             AssetDatabase.CreateAsset(settings, assetPath);
-            AssetDatabase.SaveAssets(); // Save the asset to the project
+            AssetDatabase.SaveAssets();
         }
-
+        return settings;
+    }
+#else
+    public static ArkSettings GetOrCreateSettings()
+    {
+        // At runtime, load from Resources (Resources.Load uses path relative to Resources folder, no extension)
+        ArkSettings settings = Resources.Load<ArkSettings>("ArkSettings");
+        if (settings == null)
+        {
+            Debug.LogError("ArkSettings asset not found in Resources. Please create it in the Editor at Assets/ArkSDK/Resources/ArkSettings.asset");
+        }
         return settings;
     }
 #endif
