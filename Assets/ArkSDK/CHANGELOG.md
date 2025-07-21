@@ -1,6 +1,3 @@
-## [1.0.0] - 2025-6-18
-### First Test
-- Add Authentication
-- Add Sessions Operations
-- Add Check Device Id
-- Add Branding
+## [1.1.0] - 2025-7-21
+### Version 1.1.0
+- Add Event System for all apis

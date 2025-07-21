@@ -1,6 +1,6 @@
 {
   "name": "com.genesis.arksdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "ArkSDK",
   "description": "ARK SDK is a modular GraphQL SDK for Unity, designed to handle authentication, backend interactions, and state management. It provides an easy-to-use service layer to interact with your backend via GraphQL, supporting actions like login, course management, and user authentication.",
   "unity": "2022.3",

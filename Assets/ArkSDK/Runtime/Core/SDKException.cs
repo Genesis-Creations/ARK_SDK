@@ -19,6 +19,7 @@ namespace ARK.SDK.Core
         BadRequest,
         Unauthorized,
         ParsingError,
+        InternalError,
         Unknown
     }
 }

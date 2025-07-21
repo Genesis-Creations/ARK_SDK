@@ -18,7 +18,7 @@ namespace ARK.SDK.Services.Auth
         public async Task<string> LoginWithMailAndPassowrdAsync(string email, string password)
         {
             var variables = new LoginVariables(email, password);
-            string json = await client.ExecuteAsync(AuthQueries.Login, variables);
+            string json = await client.ExecuteAsync(AuthQueries.Login, variables, "Login");
 
             try
             {
@@ -43,7 +43,7 @@ namespace ARK.SDK.Services.Auth
         public async Task<string> LoginWithPinCodeAsync(string pinCode)
         {
             var variables = new LoginWithPinCodeVariables(pinCode);
-            string json = await client.ExecuteAsync(AuthQueries.LoginWithPincode, variables);
+            string json = await client.ExecuteAsync(AuthQueries.LoginWithPincode, variables, "LoginWithPinCode");
 
             try
             {

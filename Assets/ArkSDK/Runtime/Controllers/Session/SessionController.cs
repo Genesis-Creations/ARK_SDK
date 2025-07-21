@@ -1,4 +1,6 @@
 using ARK.SDK.Core;
+using ARK.SDK.Core.Events;
+using ARK.SDK.Core.Events.Session;
 using ARK.SDK.Models.Session;
 using ARK.SDK.Services.Session;
 using System.Threading.Tasks;
@@ -18,7 +20,12 @@ namespace ARK.SDK.Controllers.Session
         {
             try
             {
-                return await sessionService.GetActiveUserSessionAsync();
+                var result = await sessionService.GetActiveUserSessionAsync();
+                
+                // Dispatch success event
+                EventManager.Dispatch(new ActiveSessionRetrievedEventData(result));
+                
+                return result;
             }
             catch (SDKException ex)
             {
@@ -30,10 +37,18 @@ namespace ARK.SDK.Controllers.Session
         {
             try
             {
-                return await sessionService.StartUserSessionAsync(sessionId);
+                var result = await sessionService.StartUserSessionAsync(sessionId);
+                
+                // Dispatch success event
+                EventManager.Dispatch(new SessionStartedEventData(result, sessionId));
+                
+                return result;
             }
             catch (SDKException ex)
             {
+                // Dispatch failure event
+                EventManager.Dispatch(new SessionStartFailedEventData(ex.Message, sessionId, ex.ErrorType));
+                
                 throw new SDKException(ex.ErrorType, $"StartUserSessionAsync failed: {ex.Message}");
             }
         }
@@ -42,10 +57,18 @@ namespace ARK.SDK.Controllers.Session
         {
             try
             {
-                return await sessionService.UpdateUserSessionAsync(sessionId, userSessionResultInput);
+                var result = await sessionService.UpdateUserSessionAsync(sessionId, userSessionResultInput);
+                
+                // Dispatch success event
+                EventManager.Dispatch(new SessionUpdatedEventData(sessionId, result, userSessionResultInput));
+                
+                return result;
             }
             catch (SDKException ex)
             {
+                // Dispatch failure event
+                EventManager.Dispatch(new SessionUpdateFailedEventData(ex.Message, sessionId, ex.ErrorType));
+                
                 throw new SDKException(ex.ErrorType, $"UpdateUserSessionAsync failed: {ex.Message}");
             }
         }

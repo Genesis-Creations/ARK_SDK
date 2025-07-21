@@ -1,4 +1,7 @@
+using ARK.SDK.Core.Events;
+using ARK.SDK.Core.Events.Network;
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
@@ -15,8 +18,13 @@ namespace ARK.SDK.Core
         }
 
         // Make the 'variables' parameter optional (defaults to null)
-        public async Task<string> ExecuteAsync(string query, object variables = null)
+        public async Task<string> ExecuteAsync(string query, object variables = null, string requestType = "GraphQL")
         {
+            var stopwatch = Stopwatch.StartNew();
+            
+            // Dispatch request started event
+            EventManager.Dispatch(new NetworkRequestStartedEventData(endpoint, requestType));
+            
             var payload = new { query, variables };
             string jsonPayload = JsonConvert.SerializeObject(payload, new JsonSerializerSettings
             {
@@ -32,7 +40,36 @@ namespace ARK.SDK.Core
             if (ARKCache.Auth != null)
                 request.SetRequestHeader("Authorization", $"Bearer {ARKCache.Auth.AccessToken}");
 
-            return await SendRequestAsync(request);
+            try
+            {
+                var result = await SendRequestAsync(request);
+                stopwatch.Stop();
+                
+                // Dispatch success event
+                EventManager.Dispatch(new NetworkRequestSucceededEventData(
+                    endpoint, 
+                    requestType, 
+                    request.responseCode, 
+                    stopwatch.ElapsedMilliseconds
+                ));
+                
+                return result;
+            }
+            catch (SDKException ex)
+            {
+                stopwatch.Stop();
+                
+                // Dispatch failure event
+                EventManager.Dispatch(new NetworkRequestFailedEventData(
+                    endpoint, 
+                    requestType, 
+                    ex.Message, 
+                    ex.ErrorType, 
+                    request.responseCode
+                ));
+                
+                throw;
+            }
         }
 
         private Task<string> SendRequestAsync(UnityWebRequest request)

@@ -2,11 +2,14 @@ using ARK.SDK.Controllers.Auth;
 using ARK.SDK.Controllers.Branding;
 using ARK.SDK.Controllers.Content;
 using ARK.SDK.Controllers.Device;
+using ARK.SDK.Controllers.Events;
 using ARK.SDK.Controllers.Session;
+using ARK.SDK.Core.Events;
 using ARK.SDK.Services.Auth;
 using ARK.SDK.Services.Branding;
 using ARK.SDK.Services.Content;
 using ARK.SDK.Services.Device;
+using ARK.SDK.Services.Events;
 using ARK.SDK.Services.Session;
 using UnityEngine;
 
@@ -27,6 +30,8 @@ namespace ARK.SDK.Core
         private static BrandingController brandingController;
 
         private static ContentController contentController;
+
+        private static EventController eventController;
 
         private static bool IsInitialized = false;
 
@@ -140,6 +145,19 @@ namespace ARK.SDK.Core
                     contentController = new ContentController(contentService);
                 }
                 return contentController;
+            }
+        }
+
+        public static EventController Events
+        {
+            get
+            {
+                if (eventController == null)
+                {
+                    var eventService = EventManager.GetEventService();
+                    eventController = new EventController(eventService);
+                }
+                return eventController;
             }
         }
     }
