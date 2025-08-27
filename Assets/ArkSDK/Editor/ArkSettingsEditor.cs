@@ -1,29 +1,31 @@
 using UnityEditor;
 using UnityEngine;
 
-public class ArkSettingsEditor : EditorWindow
-{
+public class ArkSettingsEditor : EditorWindow {
     private ArkSettings settings;
+    private Editor settingsEditor;
 
     [MenuItem("Genesis/ArkSDK/Settings")]
-    public static void ShowWindow()
-    {
-        GetWindow<ArkSettingsEditor>("Settings");
+    public static void ShowWindow() {
+        GetWindow<ArkSettingsEditor>("ArkSettings");
+    }
+    private void OnEnable() {
+        // Load or create the settings SO
+        settings = ArkSettings.GetOrCreateSettings();
+        if (settings != null) {
+            settingsEditor = Editor.CreateEditor(settings);
+            EditorGUIUtility.PingObject(settings);
+        }
     }
 
-    private void OnGUI()
-    {
-        if (settings == null)
-        {
-            settings = ArkSettings.GetOrCreateSettings();
+    private void OnGUI() {
+        if (settings == null) {
+            EditorGUILayout.HelpBox("ArkSettings asset not found!", MessageType.Error);
+            return;
+        }
+        if (settingsEditor != null) {
+            settingsEditor.OnInspectorGUI();
         }
 
-        // Display settings fields
-        settings.GraphQLURL = EditorGUILayout.TextField("GraphQL URL", settings.GraphQLURL);
-
-        if (GUI.changed)
-        {
-            EditorUtility.SetDirty(settings);
-        }
     }
 }

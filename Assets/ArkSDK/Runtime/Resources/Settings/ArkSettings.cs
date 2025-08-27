@@ -23,33 +23,6 @@ public class ArkSettings : ScriptableObject
             }
         }
     }
-
-#if UNITY_EDITOR
-    static ArkSettings _instance;
-
-    // Editor-specific function to fetch or create the settings asset
-    public static ArkSettings GetOrCreateSettings()
-    {
-        // Path to the Resources folder
-        string resourcesPath = "Assets/ArkSDK/Runtime/Resources";
-        if (!Directory.Exists(resourcesPath))
-        {
-            Directory.CreateDirectory(resourcesPath);
-        }
-        // Path to the actual settings asset inside Resources
-        string assetPath = "Assets/ArkSDK/Runtime/Resources/ArkSettings.asset";
-        // Try to load the asset from the AssetDatabase
-        ArkSettings settings = AssetDatabase.LoadAssetAtPath<ArkSettings>(assetPath);
-        if (settings == null)
-        {
-            // Create the settings asset if it does not exist
-            settings = CreateInstance<ArkSettings>();
-            AssetDatabase.CreateAsset(settings, assetPath);
-            AssetDatabase.SaveAssets();
-        }
-        return settings;
-    }
-#else
     public static ArkSettings GetOrCreateSettings()
     {
         // At runtime, load from Resources (Resources.Load uses path relative to Resources folder, no extension)
@@ -60,5 +33,4 @@ public class ArkSettings : ScriptableObject
         }
         return settings;
     }
-#endif
 }
