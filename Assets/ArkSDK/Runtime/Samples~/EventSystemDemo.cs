@@ -1,8 +1,9 @@
 using ARK.SDK.Core;
 using ARK.SDK.Core.Events.Auth;
-using ARK.SDK.Core.Events.Session;
-using ARK.SDK.Core.Events.Network;
 using ARK.SDK.Core.Events.Cache;
+using ARK.SDK.Core.Events.Network;
+using ARK.SDK.Core.Events.Session;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +18,9 @@ namespace ARK.SDK.Samples
         public Button loginButton;
         public Button logoutButton;
         public Button startSessionButton;
-        public InputField emailInput;
-        public InputField passwordInput;
-        public Text eventLogText;
+        public TMP_InputField emailInput;
+        public TMP_InputField passwordInput;
+        public TextMeshProUGUI eventLogText;
         
         private void Start()
         {
@@ -111,7 +112,7 @@ namespace ARK.SDK.Samples
         private void OnLoginSuccess(LoginSuccessEventData eventData)
         {
             LogEvent($"🟢 LOGIN SUCCESS via {eventData.LoginMethod} at {eventData.Timestamp:HH:mm:ss}");
-            LogEvent($"   User ID: {eventData.LoginData?.UserId}");
+            //LogEvent($"   User ID: {eventData.LoginData?.UserId}");
             LogEvent($"   Access Token: {eventData.LoginData?.AccessToken?.Substring(0, 10)}...");
         }
         
