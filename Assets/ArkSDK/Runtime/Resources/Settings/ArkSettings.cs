@@ -23,7 +23,7 @@ public class ArkSettings : ScriptableObject
             }
         }
     }
-    public static ArkSettings GetOrCreateSettings()
+    public static ArkSettings GetSettings()
     {
         // At runtime, load from Resources (Resources.Load uses path relative to Resources folder, no extension)
         ArkSettings settings = Resources.Load<ArkSettings>("ArkSettings");

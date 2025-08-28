@@ -11,7 +11,7 @@ public class ArkSettingsEditor : EditorWindow {
     }
     private void OnEnable() {
         // Load or create the settings SO
-        settings = ArkSettings.GetOrCreateSettings();
+        settings = ArkSettings.GetSettings();
         if (settings != null) {
             settingsEditor = Editor.CreateEditor(settings);
             EditorGUIUtility.PingObject(settings);

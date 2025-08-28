@@ -47,7 +47,7 @@ namespace ARK.SDK.Core
         {
             if (arkSettings == null)
             {
-                arkSettings = ArkSettings.GetOrCreateSettings(); // Initialize the settings
+                arkSettings = ArkSettings.GetSettings(); // Initialize the settings
             }
 
 
