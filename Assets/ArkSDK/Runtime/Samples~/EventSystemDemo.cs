@@ -112,7 +112,6 @@ namespace ARK.SDK.Samples
         private void OnLoginSuccess(LoginSuccessEventData eventData)
         {
             LogEvent($"🟢 LOGIN SUCCESS via {eventData.LoginMethod} at {eventData.Timestamp:HH:mm:ss}");
-            //LogEvent($"   User ID: {eventData.LoginData?.UserId}");
             LogEvent($"   Access Token: {eventData.LoginData?.AccessToken?.Substring(0, 10)}...");
         }
         
