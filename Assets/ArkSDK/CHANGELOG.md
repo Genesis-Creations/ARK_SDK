@@ -11,3 +11,7 @@
 - Add Event System UI
 ### Fixed
 - Fix Ark settings SO in Editor
+
+## [1.1.3] - 2025-9-2
+### Updated
+- Update Documentation
