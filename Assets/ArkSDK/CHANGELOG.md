@@ -1,3 +1,17 @@
 ## [1.1.0] - 2025-7-21
-### Version 1.1.0
+### Added
 - Add Event System for all apis
+
+## [1.1.1] - 2025-7-21
+### Fixed
+- Fix Ark settings in build
+
+## [1.1.2] - 2025-8-28
+### Added
+- Add Event System UI
+### Fixed
+- Fix Ark settings SO in Editor
+
+## [1.1.3] - 2025-9-2
+### Updated
+- Update Documentation
