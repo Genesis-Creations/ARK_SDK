@@ -2,6 +2,7 @@
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Static Badge](https://img.shields.io/badge/release-V1.1.2-red?style=flat&color=red)
 
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -12,13 +13,12 @@
 - [Usage Guide](#usage-guide)
   - [Authentication](#authentication)
   - [Session Management](#session-management)
-  - [Event System](#event-system)
   - [Device Management](#device-management)
   - [Branding](#branding)
   - [Content Management](#content-management)
+  - [Event System](#event-system)
 - [Samples](#samples)
 - [Troubleshooting](#troubleshooting)
-
 
 ## Overview
 ARK SDK is a modular GraphQL SDK for Unity that simplifies backend communication, authentication, and state management. It provides a service-based layer to interact with your backend using GraphQL, making it easy to integrate features like user authentication, course management, session handling, and event-driven communication into your Unity projects.
@@ -154,28 +154,7 @@ var moduleResult = new ModuleResultInput { Id = "module123", Duration = 10 };
 var userSessionResult = new UserSessionResultInput(moduleResult);
 await ARKManager.Session.UpdateUserSessionAsync(ARKCache.Session.Id, userSessionResult);
 ```
-### Event System  
-React to authentication, session, network, and cache changes.
-```csharp
-// Subscribe to events
-ARKManager.Events.Subscribe<LoginSuccessEventData>(e =>
-    Debug.Log($"✅ Login Success: {e.LoginMethod}"));
 
-ARKManager.Events.Subscribe<SessionStartedEventData>(e =>
-    Debug.Log($"📘 Session Started: {e.SessionId}"));
-
-// Network events
-ARKManager.Events.Subscribe<NetworkRequestFailedEventData>(e =>
-    Debug.LogError($"❌ Network Error: {e.ErrorMessage}"));
-
-// Cache events
-ARKManager.Events.Subscribe<DataCachedEventData>(e =>
-    Debug.Log($"💾 Cached: {e.DataKey}"));
-
-// Unsubscribe when done (e.g., OnDestroy)
-ARKManager.Events.Unsubscribe<LoginSuccessEventData>();
-```
----
 
 ### Device Management  
 
@@ -264,6 +243,30 @@ Debug.Log(result.ModuleData.Id);
 var input = new EditCourseInput { Id = "course-id", Name = "Updated Name" };
 var result = await ARKManager.Content.EditCourseAsync(input);
 Debug.Log(result.CourseData.Id);
+```
+---
+
+
+### Event System  
+React to authentication, session, network, and cache changes.
+```csharp
+// Subscribe to events
+ARKManager.Events.Subscribe<LoginSuccessEventData>(e =>
+    Debug.Log($"✅ Login Success: {e.LoginMethod}"));
+
+ARKManager.Events.Subscribe<SessionStartedEventData>(e =>
+    Debug.Log($"📘 Session Started: {e.SessionId}"));
+
+// Network events
+ARKManager.Events.Subscribe<NetworkRequestFailedEventData>(e =>
+    Debug.LogError($"❌ Network Error: {e.ErrorMessage}"));
+
+// Cache events
+ARKManager.Events.Subscribe<DataCachedEventData>(e =>
+    Debug.Log($"💾 Cached: {e.DataKey}"));
+
+// Unsubscribe when done (e.g., OnDestroy)
+ARKManager.Events.Unsubscribe<LoginSuccessEventData>();
 ```
 ---
 

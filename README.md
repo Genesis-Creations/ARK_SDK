@@ -12,10 +12,10 @@
 - [Usage Guide](#usage-guide)
   - [Authentication](#authentication)
   - [Session Management](#session-management)
-  - [Event System](#event-system)
   - [Device Management](#device-management)
   - [Branding](#branding)
   - [Content Management](#content-management)
+  - [Event System](#event-system)
 - [Samples](#samples)
 - [Troubleshooting](#troubleshooting)
 
@@ -155,28 +155,7 @@ var moduleResult = new ModuleResultInput { Id = "module123", Duration = 10 };
 var userSessionResult = new UserSessionResultInput(moduleResult);
 await ARKManager.Session.UpdateUserSessionAsync(ARKCache.Session.Id, userSessionResult);
 ```
-### Event System  
-React to authentication, session, network, and cache changes.
-```csharp
-// Subscribe to events
-ARKManager.Events.Subscribe<LoginSuccessEventData>(e =>
-    Debug.Log($"✅ Login Success: {e.LoginMethod}"));
 
-ARKManager.Events.Subscribe<SessionStartedEventData>(e =>
-    Debug.Log($"📘 Session Started: {e.SessionId}"));
-
-// Network events
-ARKManager.Events.Subscribe<NetworkRequestFailedEventData>(e =>
-    Debug.LogError($"❌ Network Error: {e.ErrorMessage}"));
-
-// Cache events
-ARKManager.Events.Subscribe<DataCachedEventData>(e =>
-    Debug.Log($"💾 Cached: {e.DataKey}"));
-
-// Unsubscribe when done (e.g., OnDestroy)
-ARKManager.Events.Unsubscribe<LoginSuccessEventData>();
-```
----
 
 ### Device Management  
 
@@ -265,6 +244,30 @@ Debug.Log(result.ModuleData.Id);
 var input = new EditCourseInput { Id = "course-id", Name = "Updated Name" };
 var result = await ARKManager.Content.EditCourseAsync(input);
 Debug.Log(result.CourseData.Id);
+```
+---
+
+
+### Event System  
+React to authentication, session, network, and cache changes.
+```csharp
+// Subscribe to events
+ARKManager.Events.Subscribe<LoginSuccessEventData>(e =>
+    Debug.Log($"✅ Login Success: {e.LoginMethod}"));
+
+ARKManager.Events.Subscribe<SessionStartedEventData>(e =>
+    Debug.Log($"📘 Session Started: {e.SessionId}"));
+
+// Network events
+ARKManager.Events.Subscribe<NetworkRequestFailedEventData>(e =>
+    Debug.LogError($"❌ Network Error: {e.ErrorMessage}"));
+
+// Cache events
+ARKManager.Events.Subscribe<DataCachedEventData>(e =>
+    Debug.Log($"💾 Cached: {e.DataKey}"));
+
+// Unsubscribe when done (e.g., OnDestroy)
+ARKManager.Events.Unsubscribe<LoginSuccessEventData>();
 ```
 ---
 
