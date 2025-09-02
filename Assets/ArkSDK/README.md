@@ -23,11 +23,10 @@
 ## Overview
 ARK SDK is a modular GraphQL SDK for Unity that simplifies backend communication, authentication, and state management. It provides a service-based layer to interact with your backend using GraphQL, making it easy to integrate features like user authentication, course management, session handling, and event-driven communication into your Unity projects.
 ## Features  
-
 | Feature | Description |
 |---------|-------------|
+| **GraphQL** | Simple, type-safe service layer to interact with your **GraphQL backend**. |
 | **Authentication** | Handle **user login, signup, and token management** with minimal setup. |
-| **GraphQL Queries & Mutations** | Simple, type-safe service layer to interact with your **GraphQL backend**. |
 | **Course Management** | Manage **courses, enrollment, and progress tracking** out-of-the-box. |
 | **Session Management** | Maintain **active user sessions**, auto-refresh tokens, and handle expiration events. |
 | **Event System** | Subscribe to SDK events like **login success, logout, course updates, or errors** for clean event-driven workflows. |
