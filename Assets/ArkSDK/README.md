@@ -2,7 +2,7 @@
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Static Badge](https://img.shields.io/badge/release-V1.1.2-red?style=flat&color=red)
 
-## 📑 Table of Contents
+## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
 - [Package Contents](#package-contents)
@@ -22,18 +22,18 @@
 
 ## Overview
 ARK SDK is a modular GraphQL SDK for Unity that simplifies backend communication, authentication, and state management. It provides a service-based layer to interact with your backend using GraphQL, making it easy to integrate features like user authentication, course management, session handling, and event-driven communication into your Unity projects.
-## ✨ Features  
+## Features  
 
 | Feature | Description |
 |---------|-------------|
-| 🔑 **Authentication** | Handle **user login, signup, and token management** with minimal setup. |
-| 📡 **GraphQL Queries & Mutations** | Simple, type-safe service layer to interact with your **GraphQL backend**. |
-| 📘 **Course Management** | Manage **courses, enrollment, and progress tracking** out-of-the-box. |
-| 🗂️ **Session Management** | Maintain **active user sessions**, auto-refresh tokens, and handle expiration events. |
-| 🔔 **Event System** | Subscribe to SDK events like **login success, logout, course updates, or errors** for clean event-driven workflows. |
-| 🔌 **Modular & Extensible** | Add or remove **services** as needed; integrate only what your project requires. |
+| **Authentication** | Handle **user login, signup, and token management** with minimal setup. |
+| **GraphQL Queries & Mutations** | Simple, type-safe service layer to interact with your **GraphQL backend**. |
+| **Course Management** | Manage **courses, enrollment, and progress tracking** out-of-the-box. |
+| **Session Management** | Maintain **active user sessions**, auto-refresh tokens, and handle expiration events. |
+| **Event System** | Subscribe to SDK events like **login success, logout, course updates, or errors** for clean event-driven workflows. |
+| **Modular & Extensible** | Add or remove **services** as needed; integrate only what your project requires. |
 
-## 📦 Package Contents
+## Package Contents
 
 After importing the SDK, you’ll see the following structure under `ArkSDK`:
 
@@ -53,7 +53,7 @@ After importing the SDK, you’ll see the following structure under `ArkSDK`:
   SDK documentation and guides.
 
   
-## 📦 Installation  
+## Installation  
 
 You can install **ARK SDK for Unity** in several ways depending on your workflow:  
 
@@ -66,7 +66,7 @@ You can install **ARK SDK for Unity** in several ways depending on your workflow
 https://github.com/Genesis-Creations/ARK_SDK.git?path=Assets/ArkSDK
 ```
 
-## 🖥️ Compatibility
+## Compatibility
 
 ![Unity](https://img.shields.io/badge/unity-2021.3%2B-blue?logo=unity)
 ![GraphQL](https://img.shields.io/badge/graphql-compatible-ff69b4?logo=graphql)
@@ -74,7 +74,7 @@ https://github.com/Genesis-Creations/ARK_SDK.git?path=Assets/ArkSDK
 - ✅ **Unity**: 2022.3 LTS and newer  
 - 📦 Distributed via **Unity Package Manager**
 
-## ⚡ Quick Start  
+## Quick Start  
 
 Getting started with **ARK SDK for Unity** takes just a few steps.  
 
@@ -121,14 +121,14 @@ public class ExampleUsage : MonoBehaviour {
     }
 }
 ```
-## 📘 Usage Guide  
+## Usage Guide  
 
 The `ARKManager` provides access to all core SDK features through dedicated controllers.  
 Below are the most commonly used services and examples.  
 
 ---
 
-### 🔑 Authentication  
+### Authentication  
 Authenticate users with email/password or pincode.  
 ```csharp
 // Login with email + password
@@ -140,7 +140,7 @@ var result = await ARKManager.Auth.LoginWithPinCodeAsync("123456");
 // Check cached auth data
 Debug.Log($"Token: {ARKCache.Auth?.AccessToken}");
 ```
-### 🗂️ Session Management  
+### Session Management  
 Start, retrieve, or update user sessions.
 ```csharp
 // Get active session
@@ -155,7 +155,7 @@ var moduleResult = new ModuleResultInput { Id = "module123", Duration = 10 };
 var userSessionResult = new UserSessionResultInput(moduleResult);
 await ARKManager.Session.UpdateUserSessionAsync(ARKCache.Session.Id, userSessionResult);
 ```
-### 🎯 Event System  
+### Event System  
 React to authentication, session, network, and cache changes.
 ```csharp
 // Subscribe to events
@@ -178,7 +178,7 @@ ARKManager.Events.Unsubscribe<LoginSuccessEventData>();
 ```
 ---
 
-### 📱 Device Management  
+### Device Management  
 
 Validate and manage devices with the SDK.  
 
@@ -189,7 +189,7 @@ Debug.Log($"Device Valid: {response.CheckDeviceId}");
 ```
 ---
 
-### 🎨 Branding  
+### Branding  
 
 Fetch branding data from your backend (e.g., logos, themes, styles).  
 
@@ -200,11 +200,11 @@ Debug.Log($"Branding: {JsonConvert.SerializeObject(response.Branding)}");
 ```
 ---
 
-### 📚 Content Management  
+### Content Management  
 
 Manage Interactions, Modules, and Courses directly from Unity.  
 
-#### ➕ Add Interaction
+#### Add Interaction
 ```csharp
 var input = new AddInteractionInput()
 {
@@ -219,7 +219,7 @@ var input = new AddInteractionInput()
 var result = await ARKManager.Content.AddInteractionAsync(input);
 Debug.Log($"Interaction Added: {result.InteractionData.Id}");
 ```
-#### ➕ Add Module
+#### Add Module
 ```csharp
 var input = new AddModuleInput()
 {
@@ -232,7 +232,7 @@ var input = new AddModuleInput()
 var result = await ARKManager.Content.AddModuleAsync(input);
 Debug.Log($"Module Added: {result.ModuleData.Id}");
 ```
-#### ➕ Add Course  
+#### Add Course  
 ```csharp
 var input = new AddCourseInput()
 {
@@ -248,19 +248,19 @@ var input = new AddCourseInput()
 var result = await ARKManager.Content.AddCourseAsync(input);
 Debug.Log($"Course Added: {result.CourseData.Id}");
 ```
-#### ✏️ Update Interaction  
+#### Update Interaction  
 ```csharp
 var input = new EditInteractionInput { Id = "interaction-id", ModuleId = "module-id", Name = "Updated Interaction" };
 var result = await ARKManager.Content.EditInteractionAsync(input);
 Debug.Log(result.InteractionData.Id);
 ```
-#### ✏️ Update Module
+#### Update Module
 ```csharp
 var input = new EditModuleInput { Id = "module-id", CourseId = "course-id", Name = "Updated Module" };
 var result = await ARKManager.Content.EditModuleAsync(input);
 Debug.Log(result.ModuleData.Id);
 ```
-#### ✏️ Update Course
+#### Update Course
 ```csharp
 var input = new EditCourseInput { Id = "course-id", Name = "Updated Name" };
 var result = await ARKManager.Content.EditCourseAsync(input);
@@ -268,7 +268,7 @@ Debug.Log(result.CourseData.Id);
 ```
 ---
 
-## 🧩 Samples
+## Samples
 
 The SDK includes a **Sample Package** containing ready-to-use demo scripts under the `ARK.SDK.Demo` namespace.  
 Each demo script is a `MonoBehaviour` showcasing how to call and test different API endpoints (e.g., Session, Device, Branding, Content).  
@@ -282,10 +282,10 @@ Each demo script is a `MonoBehaviour` showcasing how to call and test different 
 > ✅ This is the fastest way to explore and validate all SDK functionalities without writing custom code.
 
 <p>
-  <img src="Documentation~\Images\sample-screenshot.png" width="600" alt="ARK SDK Demo Sample in Play Mode"/>
+  <img src="Documentation~\Images\sample-screenshot.png" alt="ARK SDK Demo Sample in Play Mode"/>
 </p>
 
-## ❓ Troubleshooting
+## Troubleshooting
 
 This section covers common issues you may encounter while using **ARK SDK for Unity** and how to resolve them.
 
