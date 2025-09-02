@@ -1,6 +1,6 @@
 ﻿# ARK SDK for Unity  
 ![Status](https://img.shields.io/badge/status-active-success)
-![Static Badge](https://img.shields.io/badge/release-V1.1.2-red?style=flat&color=red)
+![Static Badge](https://img.shields.io/badge/release-V1.1.3-red?style=flat&color=red)
 
 
 ## Table of Contents
