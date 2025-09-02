@@ -9,6 +9,7 @@ ARK SDK is a modular **GraphQL SDK** for Unity, designed to handle authenticatio
 - **Content Management**: Add, edit, and retrieve courses, modules, and interactions.
 - **Device Management**:  Register and manage devices.
 - **Branding**:  Retrieve and apply branding information.
+- **Event System**: Subscribe to, trigger, and manage events across the SDK to enable reactive and modular workflows.
 
 ## Requirements
 
