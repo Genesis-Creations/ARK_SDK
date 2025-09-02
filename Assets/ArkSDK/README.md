@@ -282,7 +282,7 @@ Each demo script is a `MonoBehaviour` showcasing how to call and test different 
 > ✅ This is the fastest way to explore and validate all SDK functionalities without writing custom code.
 
 <p>
-  <img src="Documentation\sample-screenshot.png" width="600" alt="ARK SDK Demo Sample in Play Mode"/>
+  <img src="Documentation~\Images\sample-screenshot.png" width="600" alt="ARK SDK Demo Sample in Play Mode"/>
 </p>
 
 ## ❓ Troubleshooting
