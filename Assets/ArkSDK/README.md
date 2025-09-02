@@ -32,6 +32,7 @@ ARK SDK is a modular GraphQL SDK for Unity that simplifies backend communication
 | **Event System** | Subscribe to SDK events like **login success, logout, course updates, or errors** for clean event-driven workflows. |
 | **Modular & Extensible** | Add or remove **services** as needed; integrate only what your project requires. |
 
+
 ## Package Contents
 
 After importing the SDK, you’ll see the following structure under `ArkSDK`:
